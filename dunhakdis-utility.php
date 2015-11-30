@@ -22,11 +22,14 @@
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+define( 'DUNHAKDIS_UTILITY_VERSION', 1.0 );
+
 add_action('init', 'dunhakdis_utility_loader');
 
 function dunhakdis_utility_loader()
 {
 	
+	require_once plugin_dir_path( __FILE__ ) . 'core/enqueue.php';
 	require_once plugin_dir_path( __FILE__ ) . 'core/functions.php';
 	require_once plugin_dir_path( __FILE__ ) . 'shortcodes/shortcodes.php';
 
