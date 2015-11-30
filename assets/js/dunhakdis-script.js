@@ -11,7 +11,8 @@ jQuery(document).ready( function($)
  	
   	$('.dunhakdis-utility-owl-carousel').owlCarousel({
   		navigation: true,
-  		items: 4
+  		items: 4,
+  		lazyLoad: true
   	});
  
 });

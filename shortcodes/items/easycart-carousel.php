@@ -5,6 +5,11 @@
  * @since 1.0
  */
 
+if ( ! in_array( 'wp-easycart/wpeasycart.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
+{
+	return;
+}
+
 function dunhakdis_easycart_carousel( $atts ) {
 	
 	global $wpdb;
@@ -27,34 +32,46 @@ function dunhakdis_easycart_carousel( $atts ) {
 	?>
 
 	<?php if ( !empty ( $products ) ) { ?>
+	<?php $ec_currency = new ec_currency(); ?>
+
 	<div class="dunhakdis-utility-easycart-product-carousel">
 		<ul class="dunhakdis-utility-owl-carousel">
 			<?php foreach ( $products as $product ) { ?>
 				<li>
 					<?php $src = 'http://localhost/shoemaker/wp-content/plugins/wp-easycart-data/products/pics1/' . $product->image1; ?>
+					<?php $product_link = get_permalink( $product->post_id ); ?>
+
 					<div class="d-utility_item">
-						<div class="d-utility_item__image" style="height: 400px;overflow:hidden;">
-							<img src="<?php echo $src; ?>" />
+						<div class="d-utility_item__image" >
+							<a href="<?php echo esc_url( $product_link ); ?>" title="<?php echo esc_attr( $product->title ); ?>">
+								<img class="lazyOwl" src="<?php echo esc_url( $src ); ?>" data-src="<?php echo esc_url( $src ); ?>" />
+							</a>
 						</div>
 						<div class="d-utility_item__description">
 							<div class="d-utility_item___title">
 								<h3 class="item-title">
-									<a href="<?php echo esc_url( get_permalink( $product->post_id ) ); ?>" title="<?php echo esc_attr( $product->title ); ?>">
+									<a href="<?php echo esc_url( $product_link ); ?>" title="<?php echo esc_attr( $product->title ); ?>">
 										<?php echo esc_html( $product->title ); ?>
 									</a>
 								</h3>
 							</div>
 							<div class="d-utility_item___tag">
-								<a href="#">Black</a>, 
-								<a href="#">Tortoise </a> &amp; 
-								<a href="#">Khaki</a>
 							</div>
 							<div class="d-utility_item___actions">
 								<div class="item-price">
-									<del>$599.99</del>
-									<span class="actual-price">
-										$399.99
+									<?php if ( !empty ( $product->list_price ) ) { ?>
+										<del class="item-list-price">
+											<?php echo esc_html( $ec_currency->get_currency_display( $product->list_price ) ); ?>
+										</del>
+									<?php } ?>
+									<span class="item-actual-price">
+										<?php echo esc_html( $ec_currency->get_currency_display( $product->price ) ); ?>
 									</span>
+								</div>
+								<div class="item-buy-link">
+									<a title="<?php _e('Buy', 'dutility'); ?>" href="<?php echo esc_url( $product_link ); ?>" class="d-utility-buy-link">
+										<?php _e('Buy', 'dutility'); ?>
+									</a>
 								</div>
 							</div>
 						</div><!--d-utility_item__details-->
