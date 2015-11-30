@@ -9,6 +9,9 @@ jQuery(document).ready( function($)
 {
  	'use strict';
  	
-  	$('.dunhakdis-utility-owl-carousel').owlCarousel();
+  	$('.dunhakdis-utility-owl-carousel').owlCarousel({
+  		navigation: true,
+  		items: 4
+  	});
  
 });
