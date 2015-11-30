@@ -21,4 +21,15 @@
  * @since     1.0
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+add_action('init', 'dunhakdis_utility_loader');
+
+function dunhakdis_utility_loader()
+{
+	
+	require_once plugin_dir_path( __FILE__ ) . 'core/functions.php';
+	require_once plugin_dir_path( __FILE__ ) . 'shortcodes/shortcodes.php';
+
+	return;
+}
 ?>
