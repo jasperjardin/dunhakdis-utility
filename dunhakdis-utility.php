@@ -24,15 +24,23 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 define( 'DUNHAKDIS_UTILITY_VERSION', 1.0 );
 
-add_action('init', 'dunhakdis_utility_loader');
+dunhakdis_utility_loader();
 
 function dunhakdis_utility_loader()
 {
 	
+	// All JS and CSS required.
 	require_once plugin_dir_path( __FILE__ ) . 'core/enqueue.php';
+	// All core functions.
 	require_once plugin_dir_path( __FILE__ ) . 'core/functions.php';
+	// The Portfolio.
+	require_once plugin_dir_path( __FILE__ ) . 'portfolio/portfolio.php';
+	// The Testimonials.
+	require_once plugin_dir_path( __FILE__ ) . 'testimonials/testimonials.php';
+	// Shortcodes.
 	require_once plugin_dir_path( __FILE__ ) . 'shortcodes/shortcodes.php';
 
 	return;
+
 }
 ?>
