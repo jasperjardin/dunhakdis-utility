@@ -1,5 +1,6 @@
 <?php
 add_shortcode( 'dunhakdis_testimonials', 'dunhakdis_testimonials' );
+add_action( 'vc_before_init', 'dunhakdis_testimonials_vc' );
 
 function dunhakdis_testimonials( $atts ) 
 {
@@ -9,8 +10,8 @@ function dunhakdis_testimonials( $atts )
         'hide_avatar' => false,
         'hide_company' => false,
         'hide_rating' => false,
-        'has_pagination' => true,
-        'has_navigation' => true,
+        'has_pagination' => 'yes',
+        'has_navigation' => 'yes',
         'data_items' => 3,
         'color' => '',
         'style' => 'carousel',
@@ -45,12 +46,12 @@ function dunhakdis_testimonials( $atts )
 	<?php if ( !empty( $color ) ) { ?>
 		<style> .dunhakdis-utility-testimonials, .dunhakdis-utility-testimonials a { color: <?php echo esc_html($color); ?>; } </style>
 	<?php } ?>
-
+	<?php echo $has_navigation; ?>
 	<div class="dunhakdis-utility-testimonials">
 		
 		<ul class="<?php echo esc_attr( $testimonial_wrapper_class ); ?> dunhakdis-utility-list" data-items="<?php echo intval( $data_items ); ?>" 
-		data-pagination="<?php echo ($has_pagination) ? 'true' : 'false'; ?>" 
-		data-navigation="<?php echo ($has_navigation) ? 'true' : 'false'; ?>">
+		data-pagination="<?php echo ($has_pagination === 'yes') ? 'true' : 'false'; ?>" 
+		data-navigation="<?php echo ($has_navigation === 'yes') ? 'true' : 'false'; ?>">
 
 		<?php for( $i=1; $i<10; $i++ ) { ?>
 			<?php 
@@ -95,4 +96,121 @@ function dunhakdis_testimonials( $atts )
 	$content = ob_get_clean();
 
 	return $content;
+}
+
+function dunhakdis_testimonials_vc() 
+{
+	vc_map( array(
+      	"name" => __( "Testimonials", "dutility" ),
+      	"base" => "dunhakdis_testimonials",
+      	"class" => "",
+      	"category" => __( "Content", "dutility"),
+      	"params" => array(
+      		array(
+            	"type" => "colorpicker",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Color", "dutility" ),
+            	"param_name" => "color",
+            	"description" => __( "The color of text including links.", "dutility" )
+         	),
+         	array(
+            	"type" => "textfield",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Items", "dutility" ),
+            	"param_name" => "data_items",
+            	"value" => 4,
+            	"description" => __( "How many testimonials to show per slide (carousel only).", "dutility" )
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Columns", "dutility" ),
+            	"param_name" => "columns",
+            	"description" => __( "Applicable only to 'masonry' style. Will divide your testimonials into selected number of columns.", "dutility" ),
+            	"value" => array(
+            			'1' => '1',
+            			'2' => '2',
+            			'3' => '3',
+            			'4' => '4',
+             		)
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Style", "dutility" ),
+            	"param_name" => "style",
+            	"description" => __( "How the testimonial should appear.", "dutility" ),
+            	"value" => array(
+            			'Carousel' => 'carousel',
+            			'List' => 'lists',
+            			'Masonry' => 'masonry',
+             		)
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Hide Avatar", "dutility" ),
+            	"param_name" => "hide_avatar",
+            	"description" => __( "Hides the avatar if set to 'No'.", "dutility" ),
+            	"value" => array(
+            			'No' => 'no',
+            			'Yes' => 'yes',
+             		)
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Hide Company", "dutility" ),
+            	"param_name" => "hide_company",
+            	"description" => __( "Hides the company if set to 'No'.", "dutility" ),
+            	"value" => array(
+            			'No' => 'no',
+            			'Yes' => 'yes',
+             		)
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Hide Rating", "dutility" ),
+            	"param_name" => "hide_rating",
+            	"description" => __( "Hides the rating if set to 'No'.", "dutility" ),
+            	"value" => array(
+            			'No' => 'no',
+            			'Yes' => 'yes',
+             		)
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Show Pagination", "dutility" ),
+            	"param_name" => "has_pagination",
+            	"description" => __( "Hides the pagination if set to 'No' (Carousel Only).", "dutility" ),
+            	"value" => array(
+            			'Yes' => 'yes',
+            			'No' => 'no',
+             		)
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "div",
+            	"class" => "",
+            	"heading" => __( "Show Navigation", "dutility" ),
+            	"param_name" => "has_navigation",
+            	"description" => __( "Hides the navigation if set to 'No' (Carousel Only).", "dutility" ),
+            	"value" => array(
+            			'Yes' => 'yes',
+            			'No'  => 'no',
+             		)
+         	),
+
+      	)
+   	));
 }
