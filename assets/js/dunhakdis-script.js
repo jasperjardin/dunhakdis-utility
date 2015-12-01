@@ -46,7 +46,14 @@ jQuery(document).ready( function($)
 
  	});
 
- 	
-
+ 	/**
+ 	 * Begin Isotopes
+ 	 */
+ 	$('.dunhakdis-utility-testimonials-masonry').isotope({
+		// options...
+		itemSelector: '.item',
+		masonry: {
+		}
+	});
  	
 });
