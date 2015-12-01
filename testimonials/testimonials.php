@@ -27,7 +27,7 @@ function d_utility_testimonials()
 	$args = array(
 		'labels'             => $labels,
         'description'        => __( 'Description.', 'dutility' ),
-		'public'             => true,
+		'public'             => false,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
 		'show_in_menu'       => true,
@@ -38,7 +38,7 @@ function d_utility_testimonials()
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
-		'supports'           => array( 'title', 'editor' )
+		'supports'           => array( 'editor', 'custom-fields' )
 	);
 
 	register_post_type( 'testimonial', $args );
