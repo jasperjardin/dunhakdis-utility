@@ -11,16 +11,38 @@ function dunhakdis_testimonials( $atts )
         'hide_rating' => false,
         'has_pagination' => true,
         'has_navigation' => true,
-        'data_items' => 3
+        'data_items' => 3,
+        'style' => 'carousel',
+        'columns' => '4'
     ), $atts ));
 
-	ob_start();
+	$testimonial_wrapper_class = 'dunhakdis-utility-owl-carousel dunhakdis-utility-testimonials-carousel';
 
+	$allowed_type = array( 'carousel', 'list', 'masonry' );
+	$allowed_column = array( '1','2','3','4' );
+
+	if ( !in_array( $columns, $allowed_column ) ) {
+		$columns = 3;
+	}
+
+	if ( !in_array( $style, $allowed_type ) ) {
+		$style = 'carousel';
+	}
+
+	if ( $style === 'list') {
+		$testimonial_wrapper_class = 'dunhakdis-utility-testimonials-list';
+	}
+
+	if ( $style === 'masonry') {
+		$testimonial_wrapper_class = 'dunhakdis-utility-masonry dunhakdis-utility-testimonials-masonry column-'.$columns;
+	}
+
+	ob_start();
 	?>
 	
 	<div class="dunhakdis-utility-testimonials">
 		
-		<ul class="dunhakdis-utility-owl-carousel" data-items="<?php echo intval( $data_items ); ?>" 
+		<ul class="<?php echo esc_attr( $testimonial_wrapper_class ); ?> dunhakdis-utility-list" data-items="<?php echo intval( $data_items ); ?>" 
 		data-pagination="<?php echo ($has_pagination) ? 'true' : 'false'; ?>" 
 		data-navigation="<?php echo ($has_navigation) ? 'true' : 'false'; ?>">
 
@@ -42,36 +64,21 @@ function dunhakdis_testimonials( $atts )
 					right hands) and we hope that it will help you make a good start for lots 
 					of your projects and ideas! A perfectly simple way of creating 
 					a great prototype";
+
 			?>
-			<li>
-				<div class="dunhakdis-testimonial-item">
-					<div class="dunhakdis-testimonial-content">
-						<p>
-							<?php echo wp_kses( $testimonial_content, $allowed_html ); ?>
-						</p>
-					</div>
-					<div class="dunhakdis-testimonial-review">
-						<?php if ( !$hide_avatar ) { ?>
-							<div class="dunhakdis-testimonial-review-author-avatar">
-								<img width="64" height="64" class="avatar" src="<?php echo esc_url( $avatar_src ); ?>" alt="" />
-							</div>
-						<?php } ?>
-						<div class="dunhakdis-testimonial-review-author">
-							<h3 class="testimonial-author">
-								<a href="#">
-									John Doe
-								</a>
-							</h3>
-						</div>
-						<?php if ( !$hide_company ) { ?>
-						<div class="dunhakdis-testimonial-review-author-company">
-							<p class="testimonial-company">
-								Convergys Bacolod, CEO
-							</p>
-						</div>
-						<?php } ?>
-					</div>
-				</div>
+			<li class="item">
+				<?php //Carousel Style. ?>
+				<?php if ( $style === 'carousel') { ?>
+					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-carousel.php'; ?>
+				<?php } ?>
+				<?php //List Style. ?>
+				<?php if ( $style === 'list') { ?>
+					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-list.php'; ?>
+				<?php } ?>
+				<?php //Masonry Style. ?>
+				<?php if ( $style === 'masonry') { ?>
+					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-masonry.php'; ?>
+				<?php } ?>
 			</li>
 		<?php } ?>
 		</ul>
