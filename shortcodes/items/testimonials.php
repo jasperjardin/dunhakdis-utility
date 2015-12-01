@@ -12,6 +12,7 @@ function dunhakdis_testimonials( $atts )
         'has_pagination' => true,
         'has_navigation' => true,
         'data_items' => 3,
+        'color' => '',
         'style' => 'carousel',
         'columns' => '4'
     ), $atts ));
@@ -38,8 +39,13 @@ function dunhakdis_testimonials( $atts )
 	}
 
 	ob_start();
+
 	?>
 	
+	<?php if ( !empty( $color ) ) { ?>
+		<style> .dunhakdis-utility-testimonials, .dunhakdis-utility-testimonials a { color: <?php echo esc_html($color); ?>; } </style>
+	<?php } ?>
+
 	<div class="dunhakdis-utility-testimonials">
 		
 		<ul class="<?php echo esc_attr( $testimonial_wrapper_class ); ?> dunhakdis-utility-list" data-items="<?php echo intval( $data_items ); ?>" 
