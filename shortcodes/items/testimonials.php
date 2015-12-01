@@ -5,14 +5,14 @@ function dunhakdis_testimonials( $atts )
 {
 	global $wpdb;
 
-	$hide_avatar = false;
-	$hide_company = false;
-	$hide_rating = false;
-
-	$has_pagination = true;
-	$has_navigation = true;
-
-	$data_items = absint(4);
+	extract(shortcode_atts( array(
+        'hide_avatar' => false,
+        'hide_company' => false,
+        'hide_rating' => false,
+        'has_pagination' => true,
+        'has_navigation' => true,
+        'data_items' => 3
+    ), $atts ));
 
 	ob_start();
 
