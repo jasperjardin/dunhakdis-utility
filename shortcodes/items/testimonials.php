@@ -21,10 +21,10 @@ function dunhakdis_testimonials( $atts )
 	$testimonial_wrapper_class = 'dunhakdis-utility-owl-carousel dunhakdis-utility-testimonials-carousel';
 
 	$allowed_type = array( 'carousel', 'list', 'masonry' );
-	$allowed_column = array( '1','2','3','4' );
+	$allowed_columns = array( '1','2','3','4' );
 
-	if ( !in_array( $columns, $allowed_column ) ) {
-		$columns = 3;
+	if ( !in_array( $columns, $allowed_columns ) ) {
+		$columns = 4;
 	}
 
 	if ( !in_array( $style, $allowed_type ) ) {
@@ -46,7 +46,7 @@ function dunhakdis_testimonials( $atts )
 	<?php if ( !empty( $color ) ) { ?>
 		<style> .dunhakdis-utility-testimonials, .dunhakdis-utility-testimonials a { color: <?php echo esc_html($color); ?>; } </style>
 	<?php } ?>
-	<?php echo $has_navigation; ?>
+
 	<div class="dunhakdis-utility-testimonials">
 		
 		<ul class="<?php echo esc_attr( $testimonial_wrapper_class ); ?> dunhakdis-utility-list" data-items="<?php echo intval( $data_items ); ?>" 
@@ -108,52 +108,56 @@ function dunhakdis_testimonials_vc()
       	"params" => array(
       		array(
             	"type" => "colorpicker",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
             	"heading" => __( "Color", "dutility" ),
             	"param_name" => "color",
+            	"admin_label" => true,
             	"description" => __( "The color of text including links.", "dutility" )
          	),
          	array(
             	"type" => "textfield",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
-            	"heading" => __( "Items", "dutility" ),
+            	"heading" => __( "Slide Items", "dutility" ),
             	"param_name" => "data_items",
             	"value" => 4,
+            	"admin_label" => true,
             	"description" => __( "How many testimonials to show per slide (carousel only).", "dutility" )
          	),
          	array(
             	"type" => "dropdown",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
             	"heading" => __( "Columns", "dutility" ),
             	"param_name" => "columns",
+            	"admin_label" => false,
             	"description" => __( "Applicable only to 'masonry' style. Will divide your testimonials into selected number of columns.", "dutility" ),
             	"value" => array(
-            			'1' => '1',
-            			'2' => '2',
-            			'3' => '3',
             			'4' => '4',
+                  '3' => '3',
+                  '2' => '2',
              		)
          	),
          	array(
             	"type" => "dropdown",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
             	"heading" => __( "Style", "dutility" ),
             	"param_name" => "style",
+            	"admin_label" => true,
             	"description" => __( "How the testimonial should appear.", "dutility" ),
             	"value" => array(
             			'Carousel' => 'carousel',
-            			'List' => 'lists',
+            			'List' => 'list',
             			'Masonry' => 'masonry',
              		)
          	),
          	array(
             	"type" => "dropdown",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
+            	"admin_label" => false,
             	"heading" => __( "Hide Avatar", "dutility" ),
             	"param_name" => "hide_avatar",
             	"description" => __( "Hides the avatar if set to 'No'.", "dutility" ),
@@ -164,8 +168,9 @@ function dunhakdis_testimonials_vc()
          	),
          	array(
             	"type" => "dropdown",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
+            	"admin_label" => false,
             	"heading" => __( "Hide Company", "dutility" ),
             	"param_name" => "hide_company",
             	"description" => __( "Hides the company if set to 'No'.", "dutility" ),
@@ -176,8 +181,9 @@ function dunhakdis_testimonials_vc()
          	),
          	array(
             	"type" => "dropdown",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
+            	"admin_label" => false,
             	"heading" => __( "Hide Rating", "dutility" ),
             	"param_name" => "hide_rating",
             	"description" => __( "Hides the rating if set to 'No'.", "dutility" ),
@@ -188,8 +194,9 @@ function dunhakdis_testimonials_vc()
          	),
          	array(
             	"type" => "dropdown",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
+            	"admin_label" => false,
             	"heading" => __( "Show Pagination", "dutility" ),
             	"param_name" => "has_pagination",
             	"description" => __( "Hides the pagination if set to 'No' (Carousel Only).", "dutility" ),
@@ -200,8 +207,9 @@ function dunhakdis_testimonials_vc()
          	),
          	array(
             	"type" => "dropdown",
-            	"holder" => "div",
+            	"holder" => "",
             	"class" => "",
+            	"admin_label" => false,
             	"heading" => __( "Show Navigation", "dutility" ),
             	"param_name" => "has_navigation",
             	"description" => __( "Hides the navigation if set to 'No' (Carousel Only).", "dutility" ),
