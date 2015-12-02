@@ -386,3 +386,68 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 	float: left;
 	width: 80%;
 }
+
+/**
+ * Fancy Box Base CSS
+ */
+.dunhakdis-utility-fancybox {
+	position: relative;
+}
+
+.dunhakdis-utility-fancybox-wrap {
+	overflow: hidden;
+}
+
+.dunhakdis-utility-fancybox-cover-image img  {
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	width: 100%;
+	height: auto;
+}
+
+.dunhakdis-utility-fancybox-wrap:hover .dunhakdis-utility-fancybox-cover-image img 
+{
+    transform: scale(1.10,1.10) rotate( 2.5deg ); 
+}
+
+.dunhakdis-utility-fancybox-details {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.dunhakdis-utility-fancybox-details-table {
+	height: 100%;
+	width: 100%;
+	display: table;
+}
+
+.dunhakdis-utility-fancybox-details-table-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.dunhakdis-utility-fancybox.vtop .dunhakdis-utility-fancybox-details-table-cell    { vertical-align: top; }
+.dunhakdis-utility-fancybox.vbottom .dunhakdis-utility-fancybox-details-table-cell { vertical-align: bottom; }
+.dunhakdis-utility-fancybox.vcenter .dunhakdis-utility-fancybox-details-table-cell { vertical-align: center; }
+
+.dunhakdis-utility-fancybox.right .dunhakdis-utility-fancybox-details-table-cell  { text-align: right; }
+.dunhakdis-utility-fancybox.left .dunhakdis-utility-fancybox-details-table-cell   { text-align: left; }
+.dunhakdis-utility-fancybox.center .dunhakdis-utility-fancybox-details-table-cell { text-align: center; }
+
+.dunhakdis-utility-fancybox-details-table-cell h3 {
+	margin: 0;
+}
+
+.dunhakdis-utility-fancybox-details-table-cell-wrap {
+	padding: 5% 5%;
+}
+
+.dunhakdis-utility-fancybox-title,
+.dunhakdis-utility-fancybox-excerpt,
+.dunhakdis-utility-fancybox-button {
+	margin: 10px 0;
+}
+
