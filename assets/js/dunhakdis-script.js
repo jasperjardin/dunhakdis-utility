@@ -10,7 +10,7 @@ jQuery(document).ready( function($)
  	'use strict';
 
  	$(window).load(function(){
- 		/**
+ 	/**
  	 * This function checks if propValue is undefine or not.
  	 * 
  	 * @return the propValue if set, otherwise, defaultValue set.
@@ -51,14 +51,13 @@ jQuery(document).ready( function($)
  	 * Begin Isotopes
  	 */
  	$('.dunhakdis-utility-testimonials-masonry').imagesLoaded(function(){
- 		$('.dunhakdis-utility-testimonials-masonry').isotope({
-			// options...
-			itemSelector: '.item',
-			masonry: {
-			}
-		});
+	 		$('.dunhakdis-utility-testimonials-masonry').isotope({
+				// options...
+				itemSelector: '.item',
+				masonry: {
+				}
+			});
+ 		});
  	});
- 	});
-
  	
 });
