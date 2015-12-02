@@ -9,7 +9,8 @@ jQuery(document).ready( function($)
 {
  	'use strict';
 
- 	/**
+ 	$(window).load(function(){
+ 		/**
  	 * This function checks if propValue is undefine or not.
  	 * 
  	 * @return the propValue if set, otherwise, defaultValue set.
@@ -36,12 +37,12 @@ jQuery(document).ready( function($)
  			prop_navigation = dutility_bool_string( prop_navigation );
  			prop_pagination = dutility_bool_string( prop_pagination );
  		
-
 	  	$(this).owlCarousel({
 	  		navigation: prop_navigation,
 	  		items: prop_items,
 	  		pagination: prop_pagination,
-	  		lazyLoad: true
+	  		lazyLoad: true,
+	  		navigationText: false
 	  	});
 
  	});
@@ -56,6 +57,7 @@ jQuery(document).ready( function($)
 			masonry: {
 			}
 		});
+ 	});
  	});
 
  	
