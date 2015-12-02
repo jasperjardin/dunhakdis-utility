@@ -451,3 +451,66 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 	margin: 10px 0;
 }
 
+.dunhakdis-utility-portfolio li.item {
+	float: left;
+	width: 33.3%;
+}
+
+.dunhakdis-utility-portfolio {
+	margin: -5px;
+}
+
+@media ( max-width: 758px ) {
+	.dunhakdis-utility-portfolio li.item  {
+		width: 100%;
+		float: none;
+	}
+}
+
+.dunhakdis-utility-portfolio-wrap {
+	position: relative;
+	overflow: hidden;
+	margin: 5px;
+}
+
+.dunhakdis-utility-portfolio-details {
+	display: inline-block;
+	padding: 20px 20px;
+	background: #f2f2f2;
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+
+	transform: translateY(125px);
+	-moz-transform: translateY(125px);
+	-webkit-transform: translateY(125px);
+
+	transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+
+	opacity: 0;
+}
+
+.dunhakdis-utility-portfolio-wrap:hover .dunhakdis-utility-portfolio-details {
+	transform: translateY(0);
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+
+	opacity: 1;
+}
+
+.dunhakdis-utility-portfolio-details h3 {
+	margin: 0;
+}
+
+.dunhakdis-utility-portfolio-details-title {
+	float: left;
+	max-width: 90%;
+}
+
+.dunhakdis-utility-portfolio-details-link {
+	float: right;
+}
+
