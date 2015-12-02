@@ -9,7 +9,6 @@ jQuery(document).ready( function($)
 {
  	'use strict';
 
- 	$(window).load(function(){
  	/**
  	 * This function checks if propValue is undefine or not.
  	 * 
@@ -58,6 +57,5 @@ jQuery(document).ready( function($)
 				}
 			});
  		});
- 	});
  	
 });
