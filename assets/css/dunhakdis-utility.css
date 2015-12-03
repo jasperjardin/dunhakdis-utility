@@ -514,3 +514,128 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 	float: right;
 }
 
+/**
+ * Blog Masonry
+ */
+.dunhakdis-utility-blog.masonry {
+
+}
+
+.dunhakdis-utility-blog.masonry li.item {
+	width: 25%;
+	float: left;
+}
+
+.dunhakdis-utility-blog.masonry li.item .blog-item {
+	padding: 10px;
+}
+
+.dunhakdis-utility-blog.masonry li.item .blog-item .blog-item-thumbnail {
+	background: #ccc;
+	text-align: center;
+}
+
+.dunhakdis-utility-blog.masonry li.item .blog-item .blog-item-title  {
+	padding: 15px 0;
+}
+.dunhakdis-utility-blog.masonry li.item .blog-item .blog-item-title h3{
+	margin: 0;
+}
+
+.dunhakdis-utility-blog.masonry li.item .blog-item .blog-item-details {
+	padding: 10px 15px 25px 15px;
+	background: #f2f2f2;
+	border-radius: 0 0 6px 6px;
+}
+.dunhakdis-utility-blog.masonry li.item .blog-item .blog-item-excerpt {
+	margin: 10px 0 0 0;
+}
+
+/**
+ * Blog List
+ */
+.dunhakdis-utility-blog.list li.item.sticky,
+.dunhakdis-utility-blog.list li.item {
+	width: 100%;
+	float: none;
+	display: inline-block;
+	margin-bottom: 35px;
+}
+
+.dunhakdis-utility-blog.list li.item:last-child {
+	margin-bottom: 0;
+}
+.dunhakdis-utility-blog.list .blog-item-details,
+.dunhakdis-utility-blog.list .blog-item-thumbnail {
+	float: left;
+}
+.dunhakdis-utility-blog.list .blog-item-thumbnail {
+	width: 20%;
+	text-align: center;
+	margin-right: 1.5%;
+	background: #eee;
+}
+
+.dunhakdis-utility-blog.list .blog-item-details {
+	width: 78.5%;
+}
+
+.dunhakdis-utility-blog.list .blog-item-meta,
+.dunhakdis-utility-blog.list .blog-item-excerpt,
+.dunhakdis-utility-blog.list .blog-item-title {
+	margin: 10px 0;
+}
+
+/**
+ * Classic
+ */
+.dunhakdis-utility-blog.classic {
+	max-width: 650px;
+	display: block;
+}
+
+.dunhakdis-utility-blog.classic li.item {
+	margin: 35px 0;
+}
+
+.dunhakdis-utility-blog.classic .blog-item-title,
+.dunhakdis-utility-blog.classic .blog-item-meta,
+.dunhakdis-utility-blog.classic .blog-item-excerpt {
+	margin: 10px 0;
+}
+
+.dunhakdis-utility-blog.classic .blog-item-comments-number,
+.dunhakdis-utility-blog.classic .blog-item-date,
+.dunhakdis-utility-blog.classic .blog-item-comments-categories,
+.dunhakdis-utility-blog.classic .blog-item-author {
+	display: inline;
+	margin: 0 5px 0 0;
+}
+
+.dunhakdis-utility-blog.classic .blog-item-thumbnail  {
+	text-align: center;
+	background: #eee;
+}
+
+/**
+ * Carousel
+ */
+.dunhakdis-utility-blog.carousel .blog-item-title,
+.dunhakdis-utility-blog.carousel .blog-item-meta,
+.dunhakdis-utility-blog.carousel .blog-item-excerpt {
+	margin: 10px 0;
+}
+
+.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-comments-number,
+.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-date,
+.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-comments-categories,
+.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-author {
+	padding: 0;
+	display: inline;
+	margin: 0 2.5px 0 0;
+}
+
+.dunhakdis-utility-blog.carousel .blog-item-thumbnail {
+	background: #eee;
+	text-align: center;
+}
