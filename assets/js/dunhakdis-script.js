@@ -49,8 +49,8 @@ jQuery(document).ready( function($)
  	/**
  	 * Begin Isotopes
  	 */
- 	$('.dunhakdis-utility-testimonials-masonry').imagesLoaded(function(){
-	 		$('.dunhakdis-utility-testimonials-masonry').isotope({
+ 	$('.dunhakdis-utility-masonry').imagesLoaded(function(){
+	 		$('.dunhakdis-utility-masonry').isotope({
 				// options...
 				itemSelector: '.item',
 				masonry: {
