@@ -47,14 +47,27 @@ function dunhakdis_testimonials( $atts )
 		<style> .dunhakdis-utility-testimonials, .dunhakdis-utility-testimonials a { color: <?php echo esc_html($color); ?>; } </style>
 	<?php } ?>
 
+  <?php $args = array(
+          'post_type' => 'testimonial'
+        ); 
+  ?>
+
+  <?php query_posts( $args ); ?>
+
+  <?php if ( have_posts() ) { ?>
+
 	<div class="dunhakdis-utility-testimonials">
 		
 		<ul class="<?php echo esc_attr( $testimonial_wrapper_class ); ?> dunhakdis-utility-list" data-items="<?php echo intval( $data_items ); ?>" 
 		data-pagination="<?php echo ($has_pagination === 'yes') ? 'true' : 'false'; ?>" 
 		data-navigation="<?php echo ($has_navigation === 'yes') ? 'true' : 'false'; ?>">
 
-		<?php for( $i=1; $i<10; $i++ ) { ?>
-			<?php 
+		<?php while ( have_posts() ) { ?>
+      
+      <?php the_post(); ?>
+
+			<?php
+
 				$allowed_html = array(
 				    'a' => array(
 				        'href' => array(),
@@ -65,33 +78,35 @@ function dunhakdis_testimonials( $atts )
 				    'strong' => array(),
 				); 
 
-				$avatar_src = "http://thrive-demo.dunhakdis.me/wp-content/uploads/avatars/22/901e7d7479f1841a8bf57df3362ac8f0-bpfull.jpg";
-
-				$testimonial_content = "Wireframe Kit is, without any doubt, a powerful tool (especially, in the 
-					right hands) and we hope that it will help you make a good start for lots 
-					of your projects and ideas! A perfectly simple way of creating 
-					a great prototype";
-
-			?>
-			<li class="item">
-				<?php //Carousel Style. ?>
-				<?php if ( $style === 'carousel') { ?>
-					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-carousel.php'; ?>
-				<?php } ?>
-				<?php //List Style. ?>
-				<?php if ( $style === 'list') { ?>
-					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-list.php'; ?>
-				<?php } ?>
-				<?php //Masonry Style. ?>
-				<?php if ( $style === 'masonry') { ?>
-					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-masonry.php'; ?>
-				<?php } ?>
-			</li>
-		<?php } ?>
+				$avatar_src  = get_post_meta( get_the_ID(), 'avatar_src', true );
+        $client_name = get_post_meta( get_the_ID(), 'client_name', true );
+        $client_company = get_post_meta( get_the_ID(), 'client_company', true );
+				?>
+  			<li class="item">
+  				<?php //Carousel Style. ?>
+  				<?php if ( $style === 'carousel') { ?>
+  					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-carousel.php'; ?>
+  				<?php } ?>
+  				<?php //List Style. ?>
+  				<?php if ( $style === 'list') { ?>
+  					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-list.php'; ?>
+  				<?php } ?>
+  				<?php //Masonry Style. ?>
+  				<?php if ( $style === 'masonry') { ?>
+  					<?php include plugin_dir_path( __FILE__ ) . '../shortcode-templates/testimonial-masonry.php'; ?>
+  				<?php } ?>
+  			</li>
+      <?php } //end while  ?>
 		</ul>
 	</div>
-
+  <?php } else { // end if?>
+  <div class="alert alert-info">
+    <?php $testimonial_link = sprintf('<a target="_blank" href="%s">'.__('here', 'dutility').'</a>', admin_url('post-new.php?post_type=testimonial') ); ?>
+      <?php echo sprintf( esc_html__('Ops! There are no testimonials found. Click %s to add new testimonials','dutility'), $testimonial_link ); ?>
+  </div>
+  <?php } ?>
 	<?php
+  wp_reset_query();
 
 	$content = ob_get_clean();
 
@@ -101,7 +116,7 @@ function dunhakdis_testimonials( $atts )
 function dunhakdis_testimonials_vc() 
 {
 	vc_map( array(
-      	"name" => __( "Testimonials", "dutility" ),
+      	"name" => __( "Dunhakdis Testimonials", "dutility" ),
       	"base" => "dunhakdis_testimonials",
       	"class" => "",
       	"category" => __( "Content", "dutility"),

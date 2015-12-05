@@ -25,7 +25,7 @@ function dunhakdis_portfolio( $atts )
 	
 	<?php if ( have_posts() ) { ?> 
 		<div class="dunhakdis-utility-portfolio">
-			<ul class="dunhakdis-utility-list dunhakdis-utility-testimonials-masonry">
+			<ul class="dunhakdis-utility-list dunhakdis-utility-masonry">
 				<?php while( have_posts() ) { ?>
 					<?php the_post(); ?>
 					<li class="item">

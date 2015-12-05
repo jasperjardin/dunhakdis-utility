@@ -217,6 +217,10 @@
   -moz-animation: scaleUpTo 0.25s ease-in-out;
   animation: scaleUpTo 0.25s ease-in-out;
 }
+
+.mg-bottom-30 {
+	margin-bottom: 30px;
+}
 /* Keyframes */
 /*empty*/
 @-webkit-keyframes empty {
@@ -392,6 +396,16 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
  */
 .dunhakdis-utility-fancybox {
 	position: relative;
+}
+
+.dunhakdis-utility-fancybox.hide-default .dunhakdis-utility-fancybox-details-table-cell{
+	opacity: 0;
+	transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+}
+.dunhakdis-utility-fancybox.hide-default:hover .dunhakdis-utility-fancybox-details-table-cell{
+	opacity: 1;
 }
 
 .dunhakdis-utility-fancybox-wrap {
@@ -639,3 +653,4 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 	background: #eee;
 	text-align: center;
 }
+

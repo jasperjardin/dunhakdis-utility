@@ -38,7 +38,7 @@ function d_utility_testimonials()
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
-		'supports'           => array( 'editor', 'custom-fields' )
+		'supports'           => array( 'title', 'editor', 'custom-fields' )
 	);
 
 	register_post_type( 'testimonial', $args );
