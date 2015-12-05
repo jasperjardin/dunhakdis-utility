@@ -81,6 +81,18 @@ function dunhakdis_testimonials( $atts )
 				$avatar_src  = get_post_meta( get_the_ID(), 'avatar_src', true );
         $client_name = get_post_meta( get_the_ID(), 'client_name', true );
         $client_company = get_post_meta( get_the_ID(), 'client_company', true );
+
+        // convert metabox attachment id to url
+        if ( is_numeric( $avatar_src ) ) {
+          $avatar_src = wp_get_attachment_image_src( $avatar_src );
+          if ( is_array( $avatar_src ) ) {
+            if ( isset( $avatar_src[0] ) ) {
+              $avatar_src = $avatar_src[0];
+            }
+          }
+          //--
+        }
+
 				?>
   			<li class="item">
   				<?php //Carousel Style. ?>

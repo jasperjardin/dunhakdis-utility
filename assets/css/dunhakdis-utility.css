@@ -467,7 +467,17 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 
 .dunhakdis-utility-portfolio li.item {
 	float: left;
-	width: 33.3%;
+}
+
+.dunhakdis-utility-portfolio.column-1 li.item{ width: 100%; }
+.dunhakdis-utility-portfolio.column-2 li.item{ width: 50%; }
+.dunhakdis-utility-portfolio.column-3 li.item{ width: 33.3%; }
+.dunhakdis-utility-portfolio.column-4 li.item{ width: 25%; }
+.dunhakdis-utility-portfolio.column-5 li.item{ width: 20%; }
+
+.dunhakdis-utility-portfolio.style-grid .attachment-grid_size{
+	width: 100%;
+	height: auto;
 }
 
 .dunhakdis-utility-portfolio {

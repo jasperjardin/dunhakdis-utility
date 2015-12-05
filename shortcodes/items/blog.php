@@ -1,5 +1,6 @@
 <?php
 add_shortcode( 'dunhakdis_blogs', 'dunhakdis_blogs' );
+add_action( 'vc_before_init', 'dunhakdis_blogs_vc' );
 
 function dunhakdis_blogs( $atts ) 
 {
@@ -11,8 +12,8 @@ function dunhakdis_blogs( $atts )
 
 
 	$args = array(
-			'post_type' => 'post'
-		);
+		'post_type' => 'post'
+	);
 
 	ob_start();
 
@@ -135,5 +136,28 @@ function dunhakdis_blogs( $atts )
 	$content = ob_get_clean();
 
 	return $content;
+}
+
+function dunhakdis_blogs_vc() 
+{
+	vc_map( array(
+      	"name" => __( "Dunhakdis Blogs", "dutility" ),
+      	"base" => "dunhakdis_blogs",
+      	"class" => "",
+      	"category" => __( "Content", "dutility"),
+      	"params" => array(
+      		array(
+            	"type" => "dropdown",
+            	"holder" => "",
+            	"class" => "",
+            	"heading" => __( "Style", "dutility" ),
+            	"param_name" => "style",
+            	"admin_label" => true,
+            	"description" => __( "Select a style for your blog.", "dutility" ),
+            	"value" => array()
+         	),
+         )
+      )
+	);
 }
 ?>
