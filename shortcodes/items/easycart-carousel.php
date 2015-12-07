@@ -10,6 +10,9 @@ if ( ! in_array( 'wp-easycart/wpeasycart.php', apply_filters( 'active_plugins', 
 	return;
 }
 
+add_shortcode( 'dunhakdis_easycart_carousel', 'dunhakdis_easycart_carousel' );
+add_action( 'vc_before_init', 'dunhakdis_easycart_carousel_vc' );
+
 function dunhakdis_easycart_carousel( $atts ) {
 	
 	global $wpdb;
@@ -90,4 +93,27 @@ function dunhakdis_easycart_carousel( $atts ) {
 
 }
 
-add_shortcode( 'dunhakdis_easycart_carousel', 'dunhakdis_easycart_carousel' );
+function dunhakdis_easycart_carousel_vc() {
+	
+	vc_map( 
+		array(
+      		"name" => __( "Dunhakdis Easy Cart Carousel", "dutility" ),
+      		"base" => "dunhakdis_easycart_carousel",
+      		"class" => "",
+      		"category" => __( "Content", "dutility"),
+      		"params" => array(
+      			array(
+            		"type" => "textfield",
+            		"holder" => "",
+            		"class" => "",
+            		"heading" => __( "No. of Items", "dutility" ),
+            		"param_name" => "posts_per_page",
+            		"admin_label" => true,
+            		"description" => __( "How many number of products would you like to display in the carousel?", "dutility" ),
+            		"value" => 10
+         		),
+         	)//params
+      	)
+	);
+
+}

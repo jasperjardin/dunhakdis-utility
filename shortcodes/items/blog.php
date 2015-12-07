@@ -6,14 +6,16 @@ function dunhakdis_blogs( $atts )
 {
 	global $wpdb;
 
-	extract(shortcode_atts( array(
-        'display_style' => 'carousel',
-    ), $atts ));
-
-
-	$args = array(
-		'post_type' => 'post'
+	extract( shortcode_atts( 
+			array(
+	        	'display_style' => 'carousel', //array( 'list', 'masonry', 'carousel', 'classic' );
+	        	'posts_per_page' => 0,
+	        	'sort' => ''
+	    	), $atts 
+    	)
 	);
+
+	
 
 	ob_start();
 
@@ -25,6 +27,11 @@ function dunhakdis_blogs( $atts )
 
 	if ( !in_array( $display_style, $allowed_display_style ) ) {
 		$display_style = 'masonry';
+	}
+
+	if ( !in_array( $sort, array( '', 'alphabetical', 'random' ) ) ) 
+	{
+		$sort = '';
 	}
 
 	$thumbnail_size = apply_filters( 'dutility-blog-thumbnail-size', array(
@@ -40,6 +47,24 @@ function dunhakdis_blogs( $atts )
 
 	if ( 'carousel' === $display_style ) {
 		$dunhakdis_utility_blog_classes = 'dunhakdis-utility-carousel dunhakdis-utility-owl-carousel';
+	}
+
+	// Configure the query parameters
+	$args = array(
+		'post_type' => 'post',
+		'posts_per_page' => intval( $posts_per_page ),
+	);
+
+
+    //Filter orders.
+	//Random.
+	if ( 'random' === $sort ) {
+		$args['orderby'] = 'rand';
+	}
+	//Alphabetical
+	if ( 'alphabetical' === $sort ) {
+		$args['orderby'] = 'title';
+		$args['order'] = 'ASC';
 	}
 
 	query_posts( $args );
@@ -150,11 +175,40 @@ function dunhakdis_blogs_vc()
             	"type" => "dropdown",
             	"holder" => "",
             	"class" => "",
-            	"heading" => __( "Style", "dutility" ),
-            	"param_name" => "style",
+            	"heading" => __( "Display Style", "dutility" ),
+            	"param_name" => "display_style",
             	"admin_label" => true,
             	"description" => __( "Select a style for your blog.", "dutility" ),
-            	"value" => array()
+            	"value" => array(
+            			'Carousel' => 'carousel',
+            			'Masonry' => 'masonry',
+            			'Classic' => 'classic',
+            			'List' => 'list'
+            		)
+         	),
+         	array(
+            	"type" => "textfield",
+            	"holder" => "",
+            	"class" => "",
+            	"heading" => __( "No. of Posts", "dutility" ),
+            	"param_name" => "posts_per_page",
+            	"admin_label" => true,
+            	"description" => __( "The number of posts to show. Leave blank to leave to use default value set in your reading settings.", "dutility" ),
+            	"value" => "10"
+         	),
+         	array(
+            	"type" => "dropdown",
+            	"holder" => "",
+            	"class" => "",
+            	"heading" => __( "Order By", "dutility" ),
+            	"param_name" => "sort",
+            	"admin_label" => true,
+            	"description" => __( "Select a sorting order.", "dutility" ),
+            	"value" => array(
+            			'Default' => '',
+            			'Alphabetical' => 'alphabetical',
+            			'Random' => 'random',
+            		)
          	),
          )
       )

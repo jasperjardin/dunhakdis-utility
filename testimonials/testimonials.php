@@ -7,6 +7,7 @@ add_action( 'init', 'd_utility_testimonials' );
  */
 function d_utility_testimonials() 
 {
+
 	$labels = array(
 		'name'               => __( 'Testimonials', 'post type general name', 'dutility' ),
 		'singular_name'      => __( 'Testimonial', 'post type singular name', 'dutility' ),
@@ -85,7 +86,9 @@ function d_utility_testimonials_messages( $messages ) {
 		10 => __( 'Testimonial draft updated.', 'dutility' )
 	);
 
-	if ( $post_type_object->publicly_queryable ) {
+	if ( $post_type_object->publicly_queryable ) 
+	{
+		
 		$permalink = get_permalink( $post->ID );
 
 		$view_link = sprintf( ' <a href="%s">%s</a>', esc_url( $permalink ), __( 'View testimonial', 'dutility' ) );
