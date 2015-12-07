@@ -70,8 +70,8 @@ function dunhakdis_blogs( $atts )
 	query_posts( $args );
 
 	if ( have_posts() ) { ?>
-
-		<ul data-items="3" class="dunhakdis-utility-list dunhakdis-utility-blog <?php echo $dunhakdis_utility_blog_classes; ?> <?php echo esc_attr($display_style); ?>">
+	<div class="dunhakdis-utility-blog">
+		<ul data-items="3" class="dunhakdis-utility-list <?php echo $dunhakdis_utility_blog_classes; ?> <?php echo esc_attr($display_style); ?>">
 			<?php while( have_posts() ) {
 				the_post();
 				?>
@@ -152,7 +152,7 @@ function dunhakdis_blogs( $atts )
 				</li>
 			<?php } ?>
 		</ul>	
-	
+	</div>
 	<?php
 	}
 

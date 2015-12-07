@@ -644,16 +644,19 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 /**
  * Carousel
  */
-.dunhakdis-utility-blog.carousel .blog-item-title,
-.dunhakdis-utility-blog.carousel .blog-item-meta,
-.dunhakdis-utility-blog.carousel .blog-item-excerpt {
+.dunhakdis-utility-blog .carousel li.post {
+	padding: 5px;
+}
+.dunhakdis-utility-blog .carousel .blog-item-title,
+.dunhakdis-utility-blog .carousel .blog-item-meta,
+.dunhakdis-utility-blog .carousel .blog-item-excerpt {
 	margin: 10px 0;
 }
 
-.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-comments-number,
-.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-date,
-.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-comments-categories,
-.dunhakdis-utility-blog.carousel .blog-item-meta .blog-item-author {
+.dunhakdis-utility-blog .carousel .blog-item-meta .blog-item-comments-number,
+.dunhakdis-utility-blog .carousel .blog-item-meta .blog-item-date,
+.dunhakdis-utility-blog .carousel .blog-item-meta .blog-item-comments-categories,
+.dunhakdis-utility-blog .carousel .blog-item-meta .blog-item-author {
 	padding: 0;
 	display: inline;
 	margin: 0 2.5px 0 0;
