@@ -126,12 +126,16 @@ function dunhakdis_team( $atts ) {
 			<?php $avatar = wp_get_attachment_image_url( intval( $avatar ), 'thumbnail' ); ?>
 	
 		<?php } ?>
-			
-		<div class="dunhakdis-team-avatar">
-			<img src="<?php echo esc_url( $avatar ); ?>" alt="<?php _e('Profile', 'shoemaker'); ?>">
-		</div>
+		
+		<?php if ( !empty( $avatar ) ) { ?>	
+			<div class="dunhakdis-team-avatar">
+				<img src="<?php echo esc_url( $avatar ); ?>" alt="<?php _e('Profile', 'shoemaker'); ?>">
+			</div>
+		<?php } ?>
 
 		<div class="dunhakdis-team-details">
+
+			<?php if ( !empty( $name ) ) { ?>
 
 			<h3 class="dunhakdis-team-name">
 				
@@ -154,10 +158,14 @@ function dunhakdis_team( $atts ) {
 					</a>
 				<?php } ?>
 			</h3>
+			
+			<?php } ?>
 
-			<h4 class="dunhakdis-team-title">
-				<?php echo esc_html( apply_filters( 'dunhakdis_team_filter', $title ) ); ?>
-			</h4>
+			<?php if ( !empty( $title ) ) { ?>
+				<h4 class="dunhakdis-team-title">
+					<?php echo esc_html( $title ); ?>
+				</h4>
+			<?php } ?>
 
 			<div class="dunhakdis-team-social">
 				<?php 
@@ -203,11 +211,13 @@ function dunhakdis_team( $atts ) {
 
 			</div>
 
-			<div class="dunhakdis-team-about">
-				<p>
-					<?php echo esc_html( $about ); ?>
-				</p>
-			</div>
+			<?php if ( ! empty( $about ) ) { ?>
+				<div class="dunhakdis-team-about">
+					<p>
+						<?php echo esc_html( $about ); ?>
+					</p>
+				</div>
+			<?php } ?>
 
 		</div><!--.dunhakdis-team-details-->
 		
