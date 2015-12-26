@@ -55,6 +55,7 @@ function dunhakdis_icon_vc() {
 		"name" => __( "Dunhakdis Icon", "dutility" ),
 		"base" => "dunhakdis_icon",
 		"class" => "",
+		"icon" => plugins_url('dunhakdis-utility/assets/images/icon-icon-box.jpg'),
 		"category" => __( "Content", "dutility"),
 		"params" => array(
 			array(
