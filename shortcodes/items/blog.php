@@ -169,6 +169,7 @@ function dunhakdis_blogs_vc()
       	"name" => __( "Dunhakdis Blogs", "dutility" ),
       	"base" => "dunhakdis_blogs",
       	"class" => "",
+        "icon" => plugins_url('dunhakdis-utility/assets/images/icon-blog.jpg'),
       	"category" => __( "Content", "dutility"),
       	"params" => array(
       		array(
