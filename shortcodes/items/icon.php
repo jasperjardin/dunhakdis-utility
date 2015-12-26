@@ -3,29 +3,49 @@ add_shortcode( 'dunhakdis_icon', 'dunhakdis_icon' );
 add_action( 'vc_before_init', 'dunhakdis_icon_vc' );
 
 function dunhakdis_icon( $atts ) {
+
 	extract( shortcode_atts( 
 			array(
 	        	'icon' => 'star',
-	        	'text' => ''
+	        	'title' => '',
+	        	'text' => '',
+	        	'link' => ''
 	    	), $atts 
     	)
 	);
 	
 	ob_start();
 	
-	if ( function_exists('vc_map') ){ ?>
-	<div class="dunhakdis_icon_container">
-		<span class="dunhakdis_icon <?php echo esc_attr( apply_filters( 'dunhakdis_icon_filter', $icon ) ); ?>"></span>
-		<p> <?php echo esc_attr( apply_filters( 'dunhakdis_icon_filter', $text ) ); ?></p>
-	</div>
-	<?php } else { ?>
+	if ( ! function_exists('vc_map') ) { 
 
+		$icon = 'fa fa-' . $icon;
+
+	} 
+	
+	?>
+	
 	<div class="dunhakdis_icon_container">
-		<span class="dunhakdis_icon fa fa-<?php echo esc_attr( apply_filters( 'dunhakdis_icon_filter', $icon ) ); ?>"></span>
-		<p> <?php echo esc_attr( apply_filters( 'dunhakdis_icon_filter', $text ) ); ?></p>
+		<div class="row">
+			<div class="col-sm-1">
+				<a href="<?php echo esc_url( $link ); ?>" title="<?php echo esc_attr( $title ); ?>">
+					<span class="dunhakdis_icon fa-2x <?php echo esc_attr( $icon ); ?>"></span>
+				</a>
+			</div>
+			<div class="col-sm-11">
+				<h3>
+					<a href="<?php echo esc_url( $link ); ?>" title="<?php echo esc_attr( $title ); ?>">
+						<?php echo esc_html( $title ); ?>
+					</a>
+				</h3>
+				<p>
+					<?php echo esc_html( $text ); ?>
+				</p>
+			</div>
+		</div>
 	</div>
+
 	<?php
-	}
+
 	return ob_get_clean();
 }
 
@@ -48,7 +68,25 @@ function dunhakdis_icon_vc() {
 					"iconsPerPage" => 200, // default 100, how many icons per/page to display
 				),
 				"description" => __( "Select your icon.", "dutility" )
-			), 
+			),
+			array(
+				"type" => "textfield",
+				"holder" => "",
+				"class" => "",
+				"heading" => __( "Title", "dutility" ),
+				"param_name" => "title",
+				"value" => __( "", "dutility" ),
+				"description" => __( "Enter the title of the icon box.", "dutility" )
+			),
+			array(
+				"type" => "vc_link",
+				"holder" => "",
+				"class" => "",
+				"heading" => __( "Link", "dutility" ),
+				"param_name" => "link",
+				"value" => __( "", "dutility" ),
+				"description" => __( "Enter or select an existing content of your website to link this icon box.", "dutility" )
+			),
 			array(
 				"type" => "textarea",
 				"holder" => "",
@@ -56,7 +94,7 @@ function dunhakdis_icon_vc() {
 				"heading" => __( "Text", "dutility" ),
 				"param_name" => "text",
 				"value" => __( "", "dutility" ),
-				"description" => __( "Type in your text.", "dutility" )
+				"description" => __( "A small excerpt that explain what this icon box is all about.", "dutility" )
 			)
 		) // params
    ) ); //vc_map
