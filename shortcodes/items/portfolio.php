@@ -134,6 +134,7 @@ function dunhakdis_portfolio_vc() {
       	"name" => __( "Dunhakdis Portfolio", "dutility" ),
       	"base" => "dunhakdis_portfolio",
       	"class" => "",
+      	"icon" => plugins_url('dunhakdis-utility/assets/images/icon-portfolio.jpg'),
       	"category" => __( "Content", "dutility"),
       	"params" => array(
 	      		array(
