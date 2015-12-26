@@ -25,13 +25,13 @@ function dunhakdis_icon( $atts ) {
 	?>
 	
 	<div class="dunhakdis_icon_container">
-		<div class="row">
-			<div class="col-sm-1">
+		<div class="dunhakdis_icon_container__wrap">
+			<div class="dunhakdis_icon__icon">
 				<a href="<?php echo esc_url( $link ); ?>" title="<?php echo esc_attr( $title ); ?>">
 					<span class="dunhakdis_icon fa-2x <?php echo esc_attr( $icon ); ?>"></span>
 				</a>
 			</div>
-			<div class="col-sm-11">
+			<div class="dunhakdis_icon__details">
 				<h3>
 					<a href="<?php echo esc_url( $link ); ?>" title="<?php echo esc_attr( $title ); ?>">
 						<?php echo esc_html( $title ); ?>
@@ -41,6 +41,7 @@ function dunhakdis_icon( $atts ) {
 					<?php echo esc_html( $text ); ?>
 				</p>
 			</div>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 
