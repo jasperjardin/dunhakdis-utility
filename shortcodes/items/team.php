@@ -129,7 +129,7 @@ function dunhakdis_team( $atts ) {
 		
 		<?php if ( !empty( $avatar ) ) { ?>	
 			<div class="dunhakdis-team-avatar">
-				<img src="<?php echo esc_url( $avatar ); ?>" alt="<?php _e('Profile', 'shoemaker'); ?>">
+				<img class="avatar" src="<?php echo esc_url( $avatar ); ?>" alt="<?php _e('Profile', 'shoemaker'); ?>">
 			</div>
 		<?php } ?>
 
@@ -201,7 +201,7 @@ function dunhakdis_team( $atts ) {
 					foreach( $social_media_collection as $social_media ) { ?>
 						<?php if ( ! empty( $social_media['link'] ) ) { ?>
 							<li>
-								<a class="<?php esc_attr( $social_media['class'] ); ?>" href="<?php echo esc_url( $social_media['link'] ); ?>" title="<?php echo esc_attr( $social_media['title'] ); ?>">
+								<a class="<?php echo esc_attr( $social_media['class'] ); ?>" href="<?php echo esc_url( $social_media['link'] ); ?>" title="<?php echo esc_attr( $social_media['title'] ); ?>">
 									<span class="<?php echo esc_attr( $social_media['icon'] ); ?>"></span>
 								</a>
 							</li>
