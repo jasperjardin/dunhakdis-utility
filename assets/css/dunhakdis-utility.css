@@ -666,4 +666,24 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 	background: #eee;
 	text-align: center;
 }
-
+ /**
+ * Icon
+ */
+.dunhakdis_icon_container{
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+}
+.dunhakdis_icon {
+    float: left;
+    margin-right: 5px;
+}
+.dunhakdis_icon:before{
+    position: relative;
+    top: 2.5px;
+}
+.dunhakdis_icon_container p{
+	display: inline-block;
+    float: left;
+    margin: 0;
+}
