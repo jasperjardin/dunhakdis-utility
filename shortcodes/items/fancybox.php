@@ -135,6 +135,7 @@ function dunhakdis_fancybox_vc()
       	"base" => "dunhakdis_fancy_box",
       	"class" => "",
       	"category" => __( "Content", "dutility"),
+        "icon" => plugins_url('dunhakdis-utility/assets/images/icon-star.jpg'),
       	"params" => array(
       		array(
             	"type" => "textfield",
