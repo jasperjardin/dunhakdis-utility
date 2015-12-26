@@ -101,6 +101,7 @@ function dunhakdis_easycart_carousel_vc() {
       		"base" => "dunhakdis_easycart_carousel",
       		"class" => "",
       		"category" => __( "Content", "dutility"),
+      		"icon" => plugins_url('dunhakdis-utility/assets/images/icon-easycart.jpg'),
       		"params" => array(
       			array(
             		"type" => "textfield",
