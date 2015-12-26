@@ -28,6 +28,7 @@ function dunhakdis_team_vc() {
 				"class" => "",
 				"heading" => __( "Name", "dutility" ),
 				"param_name" => "name",
+				"admin_label" => true,
 				"value" => "",
 				"description" => __( "The name of the member.", "dutility" ),
 			), //Name
