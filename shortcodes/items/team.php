@@ -10,6 +10,7 @@ function dunhakdis_team_vc() {
 		"name" => __( "Dunhakdis Team", "dutility" ),
 		"base" => "dunhakdis_team",
 		"class" => "",
+		"icon" => plugins_url('dunhakdis-utility/assets/images/icon-team.jpg'),
 		"category" => __( "Content", "dutility"),
 		"params" => array(
 			array(
