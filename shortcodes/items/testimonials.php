@@ -131,6 +131,7 @@ function dunhakdis_testimonials_vc()
       	"name" => __( "Dunhakdis Testimonials", "dutility" ),
       	"base" => "dunhakdis_testimonials",
       	"class" => "",
+        "icon" => plugins_url('dunhakdis-utility/assets/images/icon-testimonials.jpg'),
       	"category" => __( "Content", "dutility"),
       	"params" => array(
       		array(
