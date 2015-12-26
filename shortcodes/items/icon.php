@@ -47,7 +47,7 @@ function dunhakdis_icon_vc() {
 					"emptyIcon" => false, // default true, display an "EMPTY" icon?
 					"iconsPerPage" => 200, // default 100, how many icons per/page to display
 				),
-				"description" => __( "Please type in your icon'.", "dutility" )
+				"description" => __( "Select your icon.", "dutility" )
 			), 
 			array(
 				"type" => "textarea",
