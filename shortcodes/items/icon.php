@@ -52,7 +52,7 @@ function dunhakdis_icon( $atts ) {
 
 function dunhakdis_icon_vc() {
 	vc_map( array(
-		"name" => __( "Dunhakdis Icon", "dutility" ),
+		"name" => __( "Dunhakdis Icon Box", "dutility" ),
 		"base" => "dunhakdis_icon",
 		"class" => "",
 		"icon" => plugins_url('dunhakdis-utility/assets/images/icon-icon-box.jpg'),
@@ -75,6 +75,7 @@ function dunhakdis_icon_vc() {
 				"type" => "textfield",
 				"holder" => "",
 				"class" => "",
+				"admin_label" => true,
 				"heading" => __( "Title", "dutility" ),
 				"param_name" => "title",
 				"value" => __( "", "dutility" ),
