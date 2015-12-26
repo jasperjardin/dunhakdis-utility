@@ -15,7 +15,7 @@ function dunhakdis_portfolio( $atts )
         	'sort' => '',  //Select: default(''), alphabetical, random.
     	), 
     	$atts )
-    );
+    ); 
     
     ob_start();
 
