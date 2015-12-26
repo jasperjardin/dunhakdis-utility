@@ -1,5 +1,7 @@
 <?php
+
 add_shortcode( 'dunhakdis_team', 'dunhakdis_team' );
+
 add_action( 'vc_before_init', 'dunhakdis_team_vc' );
 
 function dunhakdis_team_vc() {
