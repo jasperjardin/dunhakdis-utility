@@ -149,7 +149,7 @@ function dunhakdis_testimonials_vc()
             	"class" => "",
             	"heading" => __( "Slide Items", "dutility" ),
             	"param_name" => "data_items",
-            	"value" => 4,
+            	"value" => 1,
             	"admin_label" => true,
             	"description" => __( "How many testimonials to show per slide (carousel only).", "dutility" )
          	),
@@ -162,9 +162,9 @@ function dunhakdis_testimonials_vc()
             	"admin_label" => false,
             	"description" => __( "Applicable only to 'masonry' style. Will divide your testimonials into selected number of columns.", "dutility" ),
             	"value" => array(
-            			'4' => '4',
-                  '3' => '3',
-                  '2' => '2',
+            			'4 Columns' => '4',
+                  '3 Columns' => '3',
+                  '2 Columns' => '2',
              		)
          	),
          	array(
