@@ -6,7 +6,8 @@ function dunhakdis_testimonials( $atts )
 {
 	global $wpdb;
 
-	extract(shortcode_atts( array(
+	extract( 
+    shortcode_atts( array(
         'hide_avatar' => false,
         'hide_company' => false,
         'hide_rating' => false,
@@ -20,7 +21,10 @@ function dunhakdis_testimonials( $atts )
 
 	$testimonial_wrapper_class = 'dunhakdis-utility-owl-carousel dunhakdis-utility-testimonials-carousel';
 
+  $testimonial_id = 'dunhakdis-testimonial-item-' . uniqid();
+
 	$allowed_type = array( 'carousel', 'list', 'masonry' );
+
 	$allowed_columns = array( '1','2','3','4' );
 
 	if ( !in_array( $columns, $allowed_columns ) ) {
@@ -44,7 +48,7 @@ function dunhakdis_testimonials( $atts )
 	?>
 	
 	<?php if ( !empty( $color ) ) { ?>
-		<style> .dunhakdis-utility-testimonials, .dunhakdis-utility-testimonials a { color: <?php echo esc_html($color); ?>; } </style>
+		<style> <?php echo '#'.$testimonial_id; ?>, <?php echo '#'.$testimonial_id; ?> a { color: <?php echo esc_html($color); ?>; } </style>
 	<?php } ?>
 
   <?php $args = array(
@@ -56,7 +60,7 @@ function dunhakdis_testimonials( $atts )
 
   <?php if ( have_posts() ) { ?>
 
-	<div class="dunhakdis-utility-testimonials">
+	<div class="dunhakdis-utility-testimonials" id="<?php echo esc_attr( $testimonial_id ); ?>">
 		
 		<ul class="<?php echo esc_attr( $testimonial_wrapper_class ); ?> dunhakdis-utility-list" data-items="<?php echo intval( $data_items ); ?>" 
 		data-pagination="<?php echo ($has_pagination === 'yes') ? 'true' : 'false'; ?>" 
