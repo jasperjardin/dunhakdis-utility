@@ -41,7 +41,7 @@ function dunhakdis_easycart_carousel( $atts ) {
 		<ul class="dunhakdis-utility-owl-carousel">
 			<?php foreach ( $products as $product ) { ?>
 				<li>
-					<?php $src = 'http://localhost/shoemaker/wp-content/plugins/wp-easycart-data/products/pics1/' . $product->image1; ?>
+					<?php $src = plugins_url() . '/wp-easycart-data/products/pics1/' . $product->image1; ?>
 					<?php $product_link = get_permalink( $product->post_id ); ?>
 
 					<div class="d-utility_item">
