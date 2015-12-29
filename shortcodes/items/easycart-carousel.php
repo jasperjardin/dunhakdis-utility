@@ -24,7 +24,7 @@ function dunhakdis_easycart_carousel( $atts ) {
 				'image1', 'image2', 'image3', 'image4',
 			));
 
-	$limit = 10;
+	$limit = apply_filters( 'dunhakdis_utility_ec_limit', 10 );
 
 	$stmt = "select {$fields} from {$prefix}_product limit {$limit}";
 
