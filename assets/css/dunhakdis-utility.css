@@ -687,3 +687,10 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
     float: left;
     margin: 0;
 }
+/**
+ * Easy Cart
+ */
+.dunhakdis-utility-easycart-product-carousel h3.item-title {
+	margin: 15px 0;
+	font-size: 18px;
+}
