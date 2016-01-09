@@ -17,10 +17,18 @@ function dunhakdis_easycart_carousel( $atts ) {
 	
 	global $wpdb;
 
-	$prefix = 'ec'; //Easy cart prefix. Not following 'wp'.
+	$prefix = 'ec'; //Easy cart prefix. Not following 'wp' standard.
+
+	$storepage_id = intval( get_option('ec_option_storepage') );
+
+	if ( ! $storepage_id ) {
+		return;
+	}
+
+	$store_url = get_permalink( $storepage_id );
 
 	$fields = join( ',', array(
-				'product_id', 'title', 'price', 'list_price', 'post_id',
+				'product_id', 'model_number', 'title', 'price', 'list_price', 'post_id',
 				'image1', 'image2', 'image3', 'image4',
 			));
 
@@ -38,11 +46,21 @@ function dunhakdis_easycart_carousel( $atts ) {
 	<?php $ec_currency = new ec_currency(); ?>
 
 	<div class="dunhakdis-utility-easycart-product-carousel">
+
 		<ul class="dunhakdis-utility-owl-carousel">
+			
 			<?php foreach ( $products as $product ) { ?>
+
 				<li>
 					<?php $src = plugins_url() . '/wp-easycart-data/products/pics1/' . $product->image1; ?>
-					<?php $product_link = get_permalink( $product->post_id ); ?>
+					<?php 
+						$product_link = add_query_arg( 
+							array(
+								'model_number' => $product->model_number
+							),
+							$store_url
+						); 
+					?>
 
 					<div class="d-utility_item">
 						<div class="d-utility_item__image" >
