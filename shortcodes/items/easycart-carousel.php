@@ -83,6 +83,11 @@ function dunhakdis_easycart_carousel( $atts ) {
 			<?php } ?>
 		</ul>
 	</div>
+	<?php } else { ?>
+	<p class="spacer">&nbsp;</p>
+	<div class="ec_products_no_results mg-top-15">
+		<?php _e('There are no products to display yet.', 'dutility'); ?>
+	</div>
 	<?php } ?>
 
 	<?php
