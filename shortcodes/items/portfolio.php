@@ -3,8 +3,8 @@
 add_shortcode( 'dunhakdis_portfolio', 'dunhakdis_portfolio' );
 add_action( 'vc_before_init', 'dunhakdis_portfolio_vc' );
 
-function dunhakdis_portfolio( $atts ) 
-{ 
+function dunhakdis_portfolio( $atts )
+{
 	global $wpdb;
 
 	extract(
@@ -13,20 +13,20 @@ function dunhakdis_portfolio( $atts )
         	'style' => 'masonry', //Select: masonry, grid, carousel.
         	'posts_per_page' => 0, //Any numbers: Default '0' to display number of page base on the user reading settings.
         	'sort' => '',  //Select: default(''), alphabetical, random.
-    	), 
+    	),
     	$atts )
-    ); 
-    
+    );
+
     ob_start();
 
     $portfolio_classes = '';
-    
+
     // Filter allowed columns.
     $allowed_columns = array(1, 2, 3, 4,5);
     	if ( !in_array( $columns, $allowed_columns ) ) {
     		$columns = 3;
     	}
-    
+
     // Filter allowed style.
     $allowed_style = array('masonry', 'grid', 'carousel');
     	if ( !in_array( $style, $allowed_style ) ) {
@@ -65,21 +65,19 @@ function dunhakdis_portfolio( $atts )
    	//Carousel.
    	if ( 'carousel' === $style )  {
    		$portfolio_classes = 'dunhakdis-utility-owl-carousel';
-   		$columns = 'n-a';
    	}
 
     query_posts( $args );
 
 	?>
-	
-	<?php if ( have_posts() ) { ?> 
+
+	<?php if ( have_posts() ) { ?>
 		<div class="dunhakdis-utility-portfolio column-<?php echo intval( $columns ); ?> style-<?php echo esc_attr($style); ?>">
-			<ul class="dunhakdis-utility-list <?php echo esc_attr( $portfolio_classes ); ?>">
+			<ul data-items="<?php echo intval( $columns ); ?>" class="dunhakdis-utility-list <?php echo esc_attr( $portfolio_classes ); ?>">
 				<?php while( have_posts() ) { ?>
 					<?php the_post(); ?>
 					<li class="item">
 						<div class="dunhakdis-utility-portfolio-wrap">
-
 							<div class="dunhakdis-utility-portfolio-thumbnail">
 								<?php $size = ''; ?>
 								<?php if ( has_post_thumbnail() ) { ?>
@@ -90,9 +88,7 @@ function dunhakdis_portfolio( $atts )
 								<?php } else { ?>
 									<img src="<?php echo plugins_url('dunhakdis-utility/assets/images/portfolio-default.jpg'); ?>" alt="<?php echo esc_attr( the_title() ); ?>">
 								<?php } ?>
-
 							</div>
-
 							<div class="dunhakdis-utility-portfolio-details">
 								<div class="dunhakdis-utility-portfolio-details-title">
 									<h3>
@@ -100,13 +96,6 @@ function dunhakdis_portfolio( $atts )
 											<?php the_title(); ?>
 										</a>
 									</h3>
-								</div>
-								<div class="dunhakdis-utility-portfolio-details-link">
-									<a href="#">
-										<span class="symbol">
-											&rarr;
-										</span>
-									</a>
 								</div>
 							</div>
 						</div>
@@ -121,12 +110,12 @@ function dunhakdis_portfolio( $atts )
 			</p>
 		</div>
 	<?php  } ?>
-	<?php 
+	<?php
 	wp_reset_query();
 	$content = ob_get_clean();
-	
+
 	return $content;
-} 
+}
 
 
 function dunhakdis_portfolio_vc() {
