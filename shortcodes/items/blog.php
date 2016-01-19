@@ -76,25 +76,16 @@ function dunhakdis_blogs( $atts )
 				the_post();
 				?>
 				<li <?php post_class( array('item') ); ?>>
-
 					<div class="blog-item">
-						
 						<!--Post Thumbnail-->
 						<div class="blog-item-thumbnail">
-
 							<a href="<?php echo esc_url( the_permalink() ); ?>" title="<?php echo esc_attr( the_title() ); ?>">
-								
 								<?php if ( has_post_thumbnail() ) { ?>
-									
 									<?php the_post_thumbnail( $thumbnail_size[ $display_style ] ); ?>
-
 								<?php } else { ?>
-
 									<img src="<?php echo plugins_url('dunhakdis-utility/assets/images/blog.jpg'); ?>" alt="<?php echo esc_attr( the_title() ); ?>">
-
 								<?php } ?>
 							</a>
-
 						</div>
 						<div class="blog-item-details">
 							<!--Post Title-->
@@ -105,46 +96,33 @@ function dunhakdis_blogs( $atts )
 									</a>
 								</h3>
 							</div>
+						
+							<!--Post Excerpt-->
+							<?php
+							$hidden = 'hidden';
+							if ( 'list' === $display_style ) {
+								$hidden = '';
+							}
+							?>
+							<div class="blog-item-excerpt <?php echo esc_attr( $hidden ); ?>">
+								<?php the_excerpt(); ?>
+							</div>
+
 							<!--Post Meta-->
 							<div class="blog-item-meta">
 								<ul class="dunhakdis-utility-list">
-									<li class="blog-item-comments-number">
-										<span class="blog-item-comments-number-label">
-											<?php _e('Comments:','dutility'); ?>
+									<li class="blog-item-author">
+										<em><?php _e('by','dutility'); ?></em>
+										<span class="blog-item-author-author">
+											 <?php the_author_posts_link(); ?>
 										</span>
-										<span class="blog-item-comments-number-number">
-											<?php comments_number( '0', '1', '%' ); ?>
-										</span>
-									</li>
-									<li class="blog-item-date">
-										<span class="blog-item-date-label">
-											<?php _e('Posted On:','dutility'); ?>
-										</span>
+										&bull;
 										<span class="blog-item-date-date">
 											 <?php the_time( get_option( 'date_format' ) ); ?>
 										</span>
 									</li>
-									<li class="blog-item-comments-categories">
-										<span class="blog-item-categories-label">
-											<?php _e('Categories:','dutility'); ?>
-										</span>
-										<span class="blog-item-categories-categories">
-											<?php the_category($sep=', '); ?>
-										</span>
-									</li>
-									<li class="blog-item-author">
-										<span class="blog-item-author-label">
-											<?php _e('By:','dutility'); ?>
-										</span>
-										<span class="blog-item-author-author">
-											 <?php the_author_posts_link(); ?>
-										</span>
-									</li>
+
 								</ul>
-							</div>
-							<!--Post Excerpt-->
-							<div class="blog-item-excerpt">
-								<?php the_excerpt(); ?>
 							</div>
 						</div>
 					</div><!--.blog-item-->
