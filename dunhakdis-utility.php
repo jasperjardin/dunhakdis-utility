@@ -10,12 +10,12 @@
  * License: GPL2
  *
  * Includes all the file necessary for the plugin.
- *   
+ *
  * PHP version 5
  *
  * @package   Dunhakdis Utility
  * @author    Dunhakdis <noreply@dunhakdis.me>
- * @copyright 2015 - Dunhakdis 
+ * @copyright 2015 - Dunhakdis
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link      http://dunhakdis.me
  * @since     1.0
@@ -28,7 +28,7 @@ dunhakdis_utility_loader();
 
 function dunhakdis_utility_loader()
 {
-	
+
 	// All JS and CSS required.
 	require_once plugin_dir_path( __FILE__ ) . 'core/enqueue.php';
 	// All core functions.
@@ -39,6 +39,8 @@ function dunhakdis_utility_loader()
 	require_once plugin_dir_path( __FILE__ ) . 'testimonials/testimonials.php';
 	// Shortcodes.
 	require_once plugin_dir_path( __FILE__ ) . 'shortcodes/shortcodes.php';
+	// Widgets.
+	require_once plugin_dir_path( __FILE__ ) . 'widgets/widgets.php';
 
 	return;
 
