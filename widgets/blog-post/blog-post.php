@@ -33,7 +33,7 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
 
 		$title =  __( 'Recent Posts', 'dutility' );
     $max = 5;
-    $sortby = date;
+    $sortby = 'date';
     $orderby = 'asc';
 		$count = ! empty( $instance['count'] ) ? '1' : '0';
 
@@ -49,6 +49,7 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
     if ( !empty( $instance['sortby'] ) ) {
         $sortby = $instance['sortby'];
     }
+
     if ( !empty( $instance['orderby'] ) ) {
         $orderby = $instance['orderby'];
     }
@@ -80,29 +81,39 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
 		            <?php the_post_thumbnail('thumbnail'); ?>
 		          </a>
 						</div>
+
 						<div class="dutility-blog-posts-item-details">
+
 							<div class="dutility-blog-posts-item-details-title">
 								<a title="<?php esc_attr( the_title() ); ?>" href="<?php esc_url( the_permalink() ); ?>">
 									<?php the_title( '<h3 class="title">', '</h3>' ); ?>
 								</a>
 							</div>
+
 							<div class="dutility-blog-posts-item-details-comment">
 								<a href="<?php echo esc_url( comments_link() ); ?>" class="dunhakdis_blog_post_comment" >
 									<?php
 										if ($count == 0) {
-											_e('Leave a comment.', 'dutility');
+											_e('Leave a Comment', 'dutility');
 										}else{
-	 										comments_number( 'Leave a comment', '<span class="comment-count">1</span> Comment', '<span class="comment-count">%</span> Comments' );
+	 										comments_number( 'Leave a Comment', '<span class="comment-count">1</span> Comment', '<span class="comment-count">%</span> Comments' );
 										}
 									?>
 								</a>
 							</div>
+
 						</div>
+						<div class="clearfix"></div>
 
 					</div>
+					<div class="clearfix"></div>
   			</li>
+				<div class="clearfix"></div>
+
 		  <?php endwhile; ?>
 		</ul>
+		<div class="clearfix"></div>
+
 		<?php echo $args['after_widget']; ?>
 		<?php
 		// Reset the global $the_post as this query will have stomped on it
@@ -121,12 +132,14 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
    * @return array Updated safe values to be saved.
    */
   public function update( $new_instance, $old_instance ) {
+
     $instance = $old_instance;
     $instance['title'] = sanitize_text_field( $new_instance['title'] );
     $instance['max'] = (int) $new_instance['max'];
     $instance['sortby'] = $new_instance['sortby'] ;
     $instance['orderby'] = $new_instance['orderby'] ;
 		$instance['count'] = !empty($new_instance['count']) ? 1 : 0;
+
     if ( in_array( $new_instance['sortby'], array( 'title', 'author', 'date', 'rand' ) ) ) {
       $instance['sortby'] = $new_instance['sortby'];
     } else {
@@ -149,11 +162,18 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Blog Post', 'dutility' );
-    $max = isset( $instance['max'] ) ? absint( $instance['max'] ) : 5;
-		$sortby =  isset( $instance['sortby'] ) ? $instance['sortby'] : '';
-		$orderby =  isset( $instance['orderby'] ) ? $instance['orderby'] : '';
-		$count = isset($instance['count']) ? (bool) $instance['count'] :false;
+		$title = __('Blog Post', 'dutility');
+		$max = 5;
+		$sortby = __('date', 'dutility');
+		$orderby = __('desc', 'dutility');
+		$count = false;
+
+		foreach ( $instance as $key => $value ) {
+			if ( !empty( $instance[$key] ) ) {
+				$$key = $instance[$key];
+			}
+		}
+
 		?>
 		<p>
 
@@ -162,49 +182,70 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 
 			<span class="help-text">
+
 				<em><?php _e('You can use this field to enter the widget title.', 'dutility'); ?></em>
+
 			</span>
+
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'max' ); ?>"><?php _e( 'Number of posts to show: ', 'dutility' ); ?></label>
+
+			<label for="<?php echo $this->get_field_id( 'max' ); ?>"><?php _e( 'Number of Posts to show: ', 'dutility' ); ?></label>
 
 			<input class="tiny-text" id="<?php echo $this->get_field_id( 'max' ); ?>" name="<?php echo $this->get_field_name( 'max' ); ?>" type="number" step="1" min="1" value="<?php echo $max; ?>" size="3" />
+
 		</p>
 
 		<p>
-      <label for="<?php echo $this->get_field_id( 'sortby' ); ?>"><?php _e( 'Sort by:', 'dutility' ); ?></label>
+
+      <label for="<?php echo $this->get_field_id( 'sortby' ); ?>"><?php _e( 'Sort By:', 'dutility' ); ?></label>
 
       <select class="widefat" id="<?php echo $this->get_field_id( 'sortby' ); ?>" name="<?php echo $this->get_field_name( 'sortby' ); ?>" >
-        <option value="title"<?php selected( $instance['sortby'], 'title' ); ?>>
-          <?php _e('Title'); ?>
+
+        <option value="title"<?php selected($sortby, 'title' ); ?>>
+          <?php _e( 'Title', 'dutility' ); ?>
         </option>
-        <option value="author"<?php selected( $instance['sortby'], 'author' ); ?>>
-          <?php _e('Author'); ?>
+
+        <option value="author"<?php selected($sortby, 'author' ); ?>>
+          <?php _e( 'Author', 'dutility' ); ?>
         </option>
-        <option value="date"<?php selected( $instance['sortby'], 'date' ); ?>>
-          <?php _e('Date'); ?>
+
+        <option value="date"<?php selected($sortby, 'date' ); ?>>
+          <?php _e( 'Date', 'dutility' ); ?>
         </option>
-        <option value="rand"<?php selected( $instance['sortby'], 'rand' ); ?>>
-          <?php _e('Random'); ?>
+
+        <option value="rand"<?php selected($sortby, 'rand' ); ?>>
+          <?php _e( 'Random', 'dutility' ); ?>
         </option>
+
       </select>
+
 		</p>
+
     <p>
-      <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order by:', 'dutility' ); ?></label>
+
+      <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'dutility' ); ?></label>
 
       <select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>" >
-        <option value="asc"<?php selected( $instance['orderby'], 'asc' ); ?>>
-          <?php _e('ASC'); ?>
+
+        <option value="asc"<?php selected($orderby, 'asc' ); ?>>
+          <?php _e( 'ASC', 'dutility' ); ?>
         </option>
-        <option value="desc"<?php selected( $instance['orderby'], 'desc' ); ?>>
-          <?php _e('DESC'); ?>
+
+        <option value="desc"<?php selected($orderby, 'desc' ); ?>>
+          <?php _e( 'DESC', 'dutility' ); ?>
         </option>
+
       </select>
+
 		</p>
+
 		<p>
+
 			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>"<?php checked( $count ); ?> />
-			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show comment counts' ); ?></label><br />
+			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show Comment Count' ); ?></label><br />
+
 		</p>
 		<?php
 	}
