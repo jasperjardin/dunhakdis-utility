@@ -11,7 +11,7 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
 		parent::__construct(
 			'dunhakdis_blog_post_widget', // Base ID
 			__( 'Dunhakdis: Blog Widget', 'dutility' ), // Name
-			array( 'classname' => 'dunhakdis_blog_post_widget', 'description' => __( 'Use this widget display blog post.', 'dutility' ), ) // Args
+			array( 'classname' => 'dunhakdis_blog_post_widget', 'description' => __( 'Use this widget to display blog post.', 'dutility' ), ) // Args
 		);
 	}
 
@@ -35,13 +35,15 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
     $max = 5;
     $sortby = date;
     $orderby = 'asc';
+		$count = ! empty( $instance['count'] ) ? '1' : '0';
 
     if ( !empty( $instance['title'] ) ) {
         $title = $instance['title'];
     }
 
     if ( !empty( $instance['max'] ) ) {
-        $max = absint( $max );
+        // $max = absint( $max );
+			  $max = $instance['max'];
     }
 
     if ( !empty( $instance['sortby'] ) ) {
@@ -57,6 +59,7 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
 			'posts_per_page'      => $max,
       'orderby'             => $sortby,
       'order'               => $orderby,
+			'show_count'   				=> $count,
 			'no_found_rows'       => true,
 			'post_status'         => 'publish',
 			'ignore_sticky_posts' => true
@@ -69,16 +72,34 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
 		<?php  echo $args['before_title'] . esc_html( $title ) . $args['after_title']; ?>
 		<ul>
       <?php while ( $stmt->have_posts() ) : $stmt->the_post();?>
-  			<li>
-          <a href="<?php esc_url( the_permalink() ); ?>" class="dunhakdis_blog_post_img" >
-            <?php the_post_thumbnail('thumbnail'); ?>
-          </a>
-  				<a href="<?php esc_url( the_permalink() ); ?>" class="dunhakdis_blog_post_title">
-            <?php the_title( '<h3>', '</h3>' ); ?>
-          </a>
-          <a href="<?php echo esc_url( comments_link() ); ?>" class="dunhakdis_blog_post_comment" >
-              <?php _e('Leave a comment.', 'dutility'); ?>
-          </a>
+  			<li <?php post_class(); ?> >
+					<div class="dutility-blog-posts-item">
+
+						<div class="dutility-blog-posts-item-thumbnail">
+							<a title="<?php esc_attr( the_title() ); ?>" href="<?php esc_url( the_permalink() ); ?>">
+		            <?php the_post_thumbnail('thumbnail'); ?>
+		          </a>
+						</div>
+						<div class="dutility-blog-posts-item-details">
+							<div class="dutility-blog-posts-item-details-title">
+								<a title="<?php esc_attr( the_title() ); ?>" href="<?php esc_url( the_permalink() ); ?>">
+									<?php the_title( '<h3 class="title">', '</h3>' ); ?>
+								</a>
+							</div>
+							<div class="dutility-blog-posts-item-details-comment">
+								<a href="<?php echo esc_url( comments_link() ); ?>" class="dunhakdis_blog_post_comment" >
+									<?php
+										if ($count == 0) {
+											_e('Leave a comment.', 'dutility');
+										}else{
+	 										comments_number( 'Leave a comment', '<span class="comment-count">1</span> Comment', '<span class="comment-count">%</span> Comments' );
+										}
+									?>
+								</a>
+							</div>
+						</div>
+
+					</div>
   			</li>
 		  <?php endwhile; ?>
 		</ul>
@@ -105,7 +126,8 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
     $instance['max'] = (int) $new_instance['max'];
     $instance['sortby'] = $new_instance['sortby'] ;
     $instance['orderby'] = $new_instance['orderby'] ;
-    if ( in_array( $new_instance['sortby'], array( 'title', 'author', 'date' ) ) ) {
+		$instance['count'] = !empty($new_instance['count']) ? 1 : 0;
+    if ( in_array( $new_instance['sortby'], array( 'title', 'author', 'date', 'rand' ) ) ) {
       $instance['sortby'] = $new_instance['sortby'];
     } else {
       $instance['sortby'] = 'date';
@@ -131,7 +153,7 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
     $max = isset( $instance['max'] ) ? absint( $instance['max'] ) : 5;
 		$sortby =  isset( $instance['sortby'] ) ? $instance['sortby'] : '';
 		$orderby =  isset( $instance['orderby'] ) ? $instance['orderby'] : '';
-
+		$count = isset($instance['count']) ? (bool) $instance['count'] :false;
 		?>
 		<p>
 
@@ -163,6 +185,9 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
         <option value="date"<?php selected( $instance['sortby'], 'date' ); ?>>
           <?php _e('Date'); ?>
         </option>
+        <option value="rand"<?php selected( $instance['sortby'], 'rand' ); ?>>
+          <?php _e('Random'); ?>
+        </option>
       </select>
 		</p>
     <p>
@@ -177,7 +202,10 @@ class Dunhakdis_Blog_Post_Widget extends WP_Widget {
         </option>
       </select>
 		</p>
-
+		<p>
+			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>"<?php checked( $count ); ?> />
+			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show comment counts' ); ?></label><br />
+		</p>
 		<?php
 	}
 
