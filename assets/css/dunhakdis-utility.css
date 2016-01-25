@@ -6,7 +6,12 @@
  *	v1.3.3
  */
 
+
+
 /* clearfix */
+.clearfix{
+	clear: both;
+}
 .owl-carousel .owl-wrapper:after {
 	content: ".";
 	display: block;
