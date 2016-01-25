@@ -704,10 +704,61 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 	list-style: none;
 	padding: 0;
 }
-.dunhakdis_blog_post_widget .dunhakdis_blog_post_img {
+.dunhakdis_blog_post_widget li {
+    width: 100%;
     float: left;
-    width: 30%;
+    margin-bottom: 15px;
 }
-.dunhakdis_blog_post_widget .dunhakdis_blog_post_title{
-	
+.dunhakdis_blog_post_widget .dutility-blog-posts-item {
+    float: left;
+    width: 100%;
+}
+.dunhakdis_blog_post_widget .dutility-blog-posts-item .dutility-blog-posts-item-thumbnail {
+    width: 30%;
+    float: left;
+}
+.dunhakdis_blog_post_widget .dutility-blog-posts-item .dutility-blog-posts-item-details {
+    width: 70%;
+    float: left;
+}
+.dunhakdis_blog_post_widget .dutility-blog-posts-item .dutility-blog-posts-item-details .dutility-blog-posts-item-details-title {
+    width: 100%;
+    float: left;
+}
+.dunhakdis_blog_post_widget .dutility-blog-posts-item .dutility-blog-posts-item-details .dutility-blog-posts-item-details-comment {
+    width: 100%;
+    float: left;
+}
+/**
+ * Social Media Widget
+ */
+.dunhakdis_social_media_widget ul{
+	list-style: none;
+	padding: 0;
+}
+.dunhakdis_social_media_widget li{
+	display: inline-block;
+	float: left;
+	margin: 0 2.5px 5px;
+}
+.dunhakdis_social_media_widget li:first-of-type{
+	margin-left: 0;
+}
+.dunhakdis_social_media_widget li:last-of-type{
+	margin-right: 0;
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link a{
+	line-height: 34px;
+  text-align: center;
+  font-size: 17px;
+  position: relative;
+  padding: 0;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #cccccc;
+  display: inline-block;
+  border-radius: 99px;
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link a span {
+    line-height: 32px;
 }
