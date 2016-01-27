@@ -173,6 +173,7 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 			<?php } ?>
 
 		</ul>
+		<div class="clearfix"></div>
 		<?php
 		echo $args['after_widget'];
 	}
