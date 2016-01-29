@@ -767,3 +767,25 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 .dunhakdis_social_media_widget li .dutility-social-media-link a span {
     line-height: 32px;
 }
+
+/**
+ * Latest Tweets Widget
+ */
+.dunhakdis_latest_tweets_widget ul {
+	 padding: 0;
+ }
+.dunhakdis_latest_tweets_widget ul li {
+	 list-style: none;
+     width: 100%;
+     float: left;
+     margin-bottom: 15px;
+ }
+.dunhakdis_latest_tweets_widget ul li .dutility-tweet-info{
+	 width: 100%;
+}
+.dunhakdis_latest_tweets_widget ul li .dutility-tweet-info .dutility-tweet{
+	width: 100%;
+}
+.dunhakdis_latest_tweets_widget ul li .dutility-tweet-info .dutility-date-tweeted{
+	width: 100%;
+}
