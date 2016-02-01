@@ -7,7 +7,8 @@
 	$components = array(
 		'blog-post/blog-post',
 		'social-media/social-media',
-		'latest-tweets/latest-tweets'
+		'latest-tweets/latest-tweets',
+		'instagram-widget/instagram-widget'
 	);
 
 	foreach ( $components as $component ) {
