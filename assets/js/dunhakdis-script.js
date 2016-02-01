@@ -56,5 +56,31 @@ jQuery(document).ready( function($)
 				}
 			});
  		});
+    /**
+    * Begin Instagram ajax call
+    */
+    var dutility_instagram_endpoint_api_url = 'https://api.instagram.com/v1/users/3/media/recent/?access_token=2870182492.1677ed0.62f6b43513214219a5b5ce65024b95b2';
+    $.ajax({
+        type: 'GET',
+        url: dutility_instagram_endpoint_api_url,
+        contentType: "application/json",
+        dataType: 'jsonp',
+        data: {
+            action: 'dutility_instagram_endpoint',
+        },
+        success: function( respone ) {
+            var imagesObjects = response.data;
+            console.log( response );
+            $.each( imagesObjects, function( nodeListIndex, nodeListItem ) {
+                //console.log(nodeListItem.images);
+                var imageSrcUrl = nodeListItem.images.thumbnail.url;
+                $("<img />").attr("src", imageSrcUrl).appendTo("#images");
+            });
+        },
+
+        error: function(error) {
+           console.log(error.message);
+        }
+    }); //$.ajax
 
 });
