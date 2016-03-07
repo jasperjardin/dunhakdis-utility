@@ -737,23 +737,23 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
 /**
  * Social Media Widget
  */
-.dunhakdis_social_media_widget ul{
+.dunhakdis_social_media_widget ul {
 	list-style: none;
 	padding: 0;
 }
-.dunhakdis_social_media_widget li{
+.dunhakdis_social_media_widget li {
 	display: inline-block;
 	float: left;
 	margin: 0 2.5px 5px;
 }
-.dunhakdis_social_media_widget li:first-of-type{
+.dunhakdis_social_media_widget li:first-of-type {
 	margin-left: 0;
 }
-.dunhakdis_social_media_widget li:last-of-type{
+.dunhakdis_social_media_widget li:last-of-type {
 	margin-right: 0;
 }
-.dunhakdis_social_media_widget li .dutility-social-media-link a{
-	line-height: 34px;
+.dunhakdis_social_media_widget li .dutility-social-media-link a {
+  line-height: 34px;
   text-align: center;
   font-size: 17px;
   position: relative;
@@ -763,6 +763,52 @@ ul.dunhakdis-utility-testimonials-list .dunhakdis-testimonial-content-wrap {
   border: 2px solid #cccccc;
   display: inline-block;
   border-radius: 99px;
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link a:before,
+.dunhakdis_social_media_widget li .dutility-social-media-link a:after {
+  position: absolute;
+  opacity: 0;
+  z-index: 1000000;
+
+  -webkit-transition: all 0.3s ease-in-out;
+	 -moz-transition: all 0.3s ease-in-out;
+	 	  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link:hover a:before,
+.dunhakdis_social_media_widget li .dutility-social-media-link:hover a:after {
+  opacity: 1
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link a:before {
+  content: '';
+  background: transparent;
+  border: 6px solid transparent;
+  top: 100%;
+  left: 35%;
+  margin: -14px 0 0 0;
+  border-bottom-color: #000;
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link:hover a:before {
+  -webkit-transform: translateY(12px);
+  	 -moz-transform: translateY(12px);
+	 	  transform: translateY(12px);
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link a:after {
+  content: attr(data-hint);
+  background: #000;
+  color: #fff;
+  padding: 8px 10px;
+  margin: -2px 0 0 -10px;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  top: 100%;
+  left: 35%;
+}
+.dunhakdis_social_media_widget li .dutility-social-media-link:hover a:after {
+  -webkit-transform: translateY(10.5px);
+  	 -moz-transform: translateY(10.5px);
+	 	  transform: translateY(10.5px);
 }
 .dunhakdis_social_media_widget li .dutility-social-media-link a span {
     line-height: 32px;
