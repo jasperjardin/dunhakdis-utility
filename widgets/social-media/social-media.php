@@ -63,6 +63,58 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
     $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 
+	// 'fb_icon'		 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-facebook'),
+	// 'twitter_icon'		=>	 apply_filters( 'dutility_social_icons', 'fa fa-twitter'),
+	// 'instagram_icon' 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-instagram'),
+	// 'googleplus_icon' 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-google-plus'),
+	// 'linkedin_icon' 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-linkedin'),
+	// 'email_icon'	 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-envelope'),
+	$dutility_social_icons_hint = apply_filters( 'dutility_social_icons_hint',
+								array(
+									'fb_hint'		 	=>	 'Follow us on Facebook',
+									'twitter_hint'		=>	 'Follow us on Twitter',
+									'instagram_hint' 	=>	 'Follow us on Instagram',
+									'googleplus_hint' 	=>	 'Follow us on G+',
+									'linkedin_hint' 	=>	 'Visit our LinkedIn account',
+									'email_hint'	 	=>	 'Send us an Email',
+								)
+							);
+	foreach ( $dutility_social_icons_hint as $key => $value ) {
+		if ( !empty( $dutility_social_icons_hint[$key] ) ) {
+			$$key = $dutility_social_icons_hint[$key];
+		}
+	}
+	$dutility_social_icons = apply_filters( 'dutility_social_icons',
+								array(
+									'fb_icon'		 	=>	 'fa fa-facebook',
+									'twitter_icon'		=>	 'fa fa-twitter',
+									'instagram_icon' 	=>	 'fa fa-instagram',
+									'googleplus_icon' 	=>	 'fa fa-google-plus',
+									'linkedin_icon' 	=>	 'fa fa-linkedin',
+									'email_icon'	 	=>	 'fa fa-envelope',
+								)
+							);
+	foreach ( $dutility_social_icons as $key => $value ) {
+		if ( !empty( $dutility_social_icons[$key] ) ) {
+			$$key = $dutility_social_icons[$key];
+		}
+	}
+
+	$dutility_social_icons_ligatures = apply_filters( 'dutility_social_icons_ligatures',
+								array(
+									'fb_icon_ligature'		 	=>	 ' ',
+									'twitter_icon_ligature'		=>	 ' ',
+									'instagram_icon_ligature' 	=>	 ' ',
+									'googleplus_icon_ligature' 	=>	 ' ',
+									'linkedin_icon_ligature' 	=>	 ' ',
+									'email_icon_ligature'	 	=>	 ' ',
+								)
+							);
+	foreach ( $dutility_social_icons_ligatures as $key => $value ) {
+		if ( !empty( $dutility_social_icons_ligatures[$key] ) ) {
+			$$key = $dutility_social_icons_ligatures[$key];
+		}
+	}
 		?>
 		<?php echo $args['before_widget']; ?>
 
@@ -71,16 +123,24 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 
 			<?php if ( !empty( $instance['fb'] ) ) { ?>
   			<li>
-					<div class="dutility-social-media-link">
+					<div class="dutility-social-media-link facebook-wrap">
 
 						<?php if ($newtab == 0) { ?>
-			  				<a href="<?php echo esc_url($fb); ?>" title="<?php _e('Facebook', 'dutility') ?>" class="facebook">
-									<span class="fa fa-facebook"></span>
-			          </a>
+
+			  				<a href="<?php echo esc_url($fb); ?>" title="<?php _e('Facebook', 'dutility') ?>" class="facebook" data-hint="<?php echo esc_html( $fb_hint ); ?>">
+
+								<span class="<?php echo $fb_icon; ?>"> <?php echo esc_html( $fb_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php }else{ ?>
-								<a href="<?php echo esc_url($fb); ?>" title="<?php _e('Facebook', 'dutility') ?>" class="facebook" target="_blank">
-									<span class="fa fa-facebook"></span>
-			          </a>
+
+							<a href="<?php echo esc_url($fb); ?>" title="<?php _e('Facebook', 'dutility') ?>" class="facebook" target="_blank" data-hint="<?php echo esc_html( $fb_hint ); ?>">
+
+								<span class="<?php echo $fb_icon; ?>"> <?php echo esc_html( $fb_icon_ligature ); ?> </span>
+
+		          			</a>
+
 						<?php } ?>
 
 					</div>
@@ -88,16 +148,24 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 			<?php } ?>
 			<?php if ( !empty( $instance['twitter'] ) ) { ?>
 				<li>
-					<div class="dutility-social-media-link">
+					<div class="dutility-social-media-link twitter-wrap">
 
 						<?php if ($newtab == 0) { ?>
-		  				<a href="<?php echo esc_url($twitter); ?>" title="<?php _e('Twitter', 'dutility') ?>" class="twitter">
-								<span class="fa fa-twitter"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($twitter); ?>" title="<?php _e('Twitter', 'dutility') ?>" class="twitter" data-hint="<?php echo esc_html( $twitter_hint ); ?>">
+
+								<span class="<?php echo $twitter_icon; ?>"> <?php echo esc_html( $twitter_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php }else{ ?>
-		  				<a href="<?php echo esc_url($twitter); ?>" title="<?php _e('Twitter', 'dutility') ?>" class="twitter" target="_blank">
-								<span class="fa fa-twitter"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($twitter); ?>" title="<?php _e('Twitter', 'dutility') ?>" class="twitter" target="_blank" data-hint="<?php echo esc_html( $twitter_hint ); ?>">
+
+								<span class="<?php echo $twitter_icon; ?>"> <?php echo esc_html( $twitter_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php } ?>
 
 					</div>
@@ -105,16 +173,24 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 			<?php } ?>
 			<?php if ( !empty( $instance['instagram'] ) ) { ?>
 				<li>
-					<div class="dutility-social-media-link">
+					<div class="dutility-social-media-link instagram-wrap">
 
 						<?php if ($newtab == 0) { ?>
-		  				<a href="<?php echo esc_url($instagram); ?>" title="<?php _e('Instagram', 'dutility') ?>" class="instagram">
-								<span class="fa fa-instagram"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($instagram); ?>" title="<?php _e('Instagram', 'dutility') ?>" class="instagram" data-hint="<?php echo esc_html( $instagram_hint ); ?>">
+
+								<span class="<?php echo $instagram_icon; ?>"> <?php echo esc_html( $instagram_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php }else{ ?>
-		  				<a href="<?php echo esc_url($instagram); ?>" title="<?php _e('Instagram', 'dutility') ?>" class="instagram" target="_blank">
-								<span class="fa fa-instagram"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($instagram); ?>" title="<?php _e('Instagram', 'dutility') ?>" class="instagram" target="_blank" data-hint="<?php echo esc_html( $instagram_hint ); ?>">
+
+								<span class="<?php echo $instagram_icon; ?>"> <?php echo esc_html( $instagram_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php } ?>
 
 					</div>
@@ -122,16 +198,24 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 			<?php } ?>
 			<?php if ( !empty( $instance['googleplus'] ) ) { ?>
 				<li>
-					<div class="dutility-social-media-link">
+					<div class="dutility-social-media-link googleplus-wrap">
 
 						<?php if ($newtab == 0) { ?>
-		  				<a href="<?php echo esc_url($googleplus); ?>" title="<?php _e('Google+', 'dutility') ?>" class="googleplus">
-								<span class="fa fa-google-plus"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($googleplus); ?>" title="<?php _e('Google+', 'dutility') ?>" class="googleplus" data-hint="<?php echo esc_html( $googleplus_hint ); ?>">
+
+								<span class="<?php echo $googleplus_icon; ?>"> <?php echo esc_html( $googleplus_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php }else{ ?>
-		  				<a href="<?php echo esc_url($googleplus); ?>" title="<?php _e('Google+', 'dutility') ?>" class="googleplus" target="_blank">
-								<span class="fa fa-google-plus"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($googleplus); ?>" title="<?php _e('Google+', 'dutility') ?>" class="googleplus" target="_blank" data-hint="<?php echo esc_html( $googleplus_hint ); ?>">
+
+								<span class="<?php echo $googleplus_icon; ?>"> <?php echo esc_html( $googleplus_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php } ?>
 
 					</div>
@@ -139,16 +223,24 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 			<?php } ?>
 			<?php if ( !empty( $instance['linkedin'] ) ) { ?>
 				<li>
-					<div class="dutility-social-media-link">
+					<div class="dutility-social-media-link linkedin-wrap">
 
 						<?php if ($newtab == 0) { ?>
-		  				<a href="<?php echo esc_url($linkedin); ?>" title="<?php _e('Linkedin', 'dutility') ?>" class="linkedin">
-								<span class="fa fa-linkedin"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($linkedin); ?>" title="<?php _e('Linkedin', 'dutility') ?>" class="linkedin" data-hint="<?php echo esc_html( $linkedin_hint ); ?>">
+
+								<span class="<?php echo $linkedin_icon; ?>"> <?php echo esc_html( $linkedin_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php }else{ ?>
-		  				<a href="<?php echo esc_url($linkedin); ?>" title="<?php _e('Linkedin', 'dutility') ?>" class="linkedin" target="_blank">
-								<span class="fa fa-linkedin"></span>
-		          </a>
+
+			  				<a href="<?php echo esc_url($linkedin); ?>" title="<?php _e('Linkedin', 'dutility') ?>" class="linkedin" target="_blank" data-hint="<?php echo esc_html( $linkedin_hint ); ?>">
+
+								<span class="<?php echo $linkedin_icon; ?>"> <?php echo esc_html( $linkedin_icon_ligature ); ?> </span>
+
+							</a>
+
 						<?php } ?>
 
 					</div>
@@ -156,16 +248,24 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 			<?php } ?>
 			<?php if ( !empty( $instance['email'] ) ) { ?>
 				<li>
-					<div class="dutility-social-media-link">
+					<div class="dutility-social-media-link email-wrap">
 
 						<?php if ($newtab == 0) { ?>
-		  				<a href="mailto:<?php echo esc_url($email); ?>" title="<?php _e('Email', 'dutility') ?>" class="email">
-								<span class="fa fa-envelope"></span>
-		          </a>
+
+			  				<a href="mailto:<?php echo esc_url($email); ?>" title="<?php _e('Email', 'dutility') ?>" class="email" data-hint="<?php echo esc_html( $email_hint ); ?>">
+
+								<span class="<?php echo $email_icon; ?>"> <?php echo esc_html( $email_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php }else{ ?>
-		  				<a href="mailto:<?php echo esc_url($email); ?>" title="<?php _e('Email', 'dutility') ?>" class="email" target="_blank">
-								<span class="fa fa-envelope"></span>
-		          </a>
+
+			  				<a href="mailto:<?php echo esc_url($email); ?>" title="<?php _e('Email', 'dutility') ?>" class="email" target="_blank" data-hint="<?php echo esc_html( $email_hint ); ?>">
+
+								<span class="<?php echo $email_icon; ?>"> <?php echo esc_html( $email_icon_ligature ); ?> </span>
+
+			          		</a>
+
 						<?php } ?>
 
 					</div>
@@ -190,8 +290,8 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
    * @return array Updated safe values to be saved.
    */
   public function update( $new_instance, $old_instance ) {
-    $instance = $old_instance;
-    $instance['title'] = sanitize_text_field( $new_instance['title'] );
+	    $instance = $old_instance;
+	    $instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['fb'] = ( ! empty( $new_instance['fb'] ) ) ? esc_url( $new_instance['fb'] ) : '';
 		$instance['twitter'] = ( ! empty( $new_instance['twitter'] ) ) ? esc_url( $new_instance['twitter'] ) : '';
 		$instance['instagram'] = ( ! empty( $new_instance['instagram'] ) ) ? esc_url( $new_instance['instagram'] ) : '';
@@ -213,12 +313,12 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 	public function form( $instance ) {
 
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Social Media', 'dutility' );
-    $fb = isset( $instance['fb'] ) ? $instance['fb']  : '';
-    $twitter = isset( $instance['twitter'] ) ? $instance['twitter']  : '';
-    $instagram = isset( $instance['instagram'] ) ? $instance['instagram']  : '';
-    $googleplus = isset( $instance['googleplus'] ) ? $instance['googleplus']  : '';
-    $linkedin = isset( $instance['linkedin'] ) ? $instance['linkedin']  : '';
-    $email = isset( $instance['email'] ) ? $instance['email']  : '';
+	    $fb = isset( $instance['fb'] ) ? $instance['fb']  : '';
+	    $twitter = isset( $instance['twitter'] ) ? $instance['twitter']  : '';
+	    $instagram = isset( $instance['instagram'] ) ? $instance['instagram']  : '';
+	    $googleplus = isset( $instance['googleplus'] ) ? $instance['googleplus']  : '';
+	    $linkedin = isset( $instance['linkedin'] ) ? $instance['linkedin']  : '';
+	    $email = isset( $instance['email'] ) ? $instance['email']  : '';
 		$newtab = isset($instance['newtab']) ? (bool) $instance['newtab'] : false;
 
 		?>
