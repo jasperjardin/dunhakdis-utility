@@ -31,90 +31,83 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 
 		$title =  __( 'Recent Posts', 'dutility' );
 		$fb = "";
-    $twitter = "";
-    $instagram = "";
-    $googleplus = "";
-    $linkedin = "";
-    $email = "";
+		$twitter = "";
+		$instagram = "";
+		$googleplus = "";
+		$linkedin = "";
+		$email = "";
 		$newtab = ! empty( $instance['newtab'] ) ? '1' : '0';
 
-    if ( !empty( $instance['title'] ) ) {
-        $title = $instance['title'];
-    }
-    if ( !empty( $instance['fb'] ) ) {
-        $fb = $instance['fb'];
-    }
-    if ( !empty( $instance['twitter'] ) ) {
-        $twitter = $instance['twitter'];
-    }
+	    if ( !empty( $instance['title'] ) ) {
+	        $title = $instance['title'];
+	    }
+	    if ( !empty( $instance['fb'] ) ) {
+	        $fb = $instance['fb'];
+	    }
+	    if ( !empty( $instance['twitter'] ) ) {
+	        $twitter = $instance['twitter'];
+	    }
 		if ( !empty( $instance['instagram'] ) ) {
-        $instagram = $instance['instagram'];
-    }
+	        $instagram = $instance['instagram'];
+	    }
 		if ( !empty( $instance['googleplus'] ) ) {
-        $googleplus = $instance['googleplus'];
-    }
+	        $googleplus = $instance['googleplus'];
+	    }
 		if ( !empty( $instance['linkedin'] ) ) {
-        $linkedin = $instance['linkedin'];
-    }
+	        $linkedin = $instance['linkedin'];
+	    }
 		if ( !empty( $instance['email'] ) ) {
-        $email = $instance['email'];
-    }
+	        $email = $instance['email'];
+	    }
 
-    $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+	    $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
-
-	// 'fb_icon'		 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-facebook'),
-	// 'twitter_icon'		=>	 apply_filters( 'dutility_social_icons', 'fa fa-twitter'),
-	// 'instagram_icon' 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-instagram'),
-	// 'googleplus_icon' 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-google-plus'),
-	// 'linkedin_icon' 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-linkedin'),
-	// 'email_icon'	 	=>	 apply_filters( 'dutility_social_icons', 'fa fa-envelope'),
-	$dutility_social_icons_hint = apply_filters( 'dutility_social_icons_hint',
-								array(
-									'fb_hint'		 	=>	 'Follow us on Facebook',
-									'twitter_hint'		=>	 'Follow us on Twitter',
-									'instagram_hint' 	=>	 'Follow us on Instagram',
-									'googleplus_hint' 	=>	 'Follow us on G+',
-									'linkedin_hint' 	=>	 'Visit our LinkedIn account',
-									'email_hint'	 	=>	 'Send us an Email',
-								)
-							);
-	foreach ( $dutility_social_icons_hint as $key => $value ) {
-		if ( !empty( $dutility_social_icons_hint[$key] ) ) {
-			$$key = $dutility_social_icons_hint[$key];
+		$dutility_social_icons_hint = apply_filters( 'dutility_social_icons_hint',
+									array(
+										'fb_hint'		 	=>	 'Follow us on Facebook',
+										'twitter_hint'		=>	 'Follow us on Twitter',
+										'instagram_hint' 	=>	 'Follow us on Instagram',
+										'googleplus_hint' 	=>	 'Follow us on G+',
+										'linkedin_hint' 	=>	 'Visit our LinkedIn',
+										'email_hint'	 	=>	 'Send us an Email',
+									)
+								);
+		foreach ( $dutility_social_icons_hint as $key => $value ) {
+			if ( !empty( $dutility_social_icons_hint[$key] ) ) {
+				$$key = $dutility_social_icons_hint[$key];
+			}
 		}
-	}
-	$dutility_social_icons = apply_filters( 'dutility_social_icons',
-								array(
-									'fb_icon'		 	=>	 'fa fa-facebook',
-									'twitter_icon'		=>	 'fa fa-twitter',
-									'instagram_icon' 	=>	 'fa fa-instagram',
-									'googleplus_icon' 	=>	 'fa fa-google-plus',
-									'linkedin_icon' 	=>	 'fa fa-linkedin',
-									'email_icon'	 	=>	 'fa fa-envelope',
-								)
-							);
-	foreach ( $dutility_social_icons as $key => $value ) {
-		if ( !empty( $dutility_social_icons[$key] ) ) {
-			$$key = $dutility_social_icons[$key];
+		$dutility_social_icons = apply_filters( 'dutility_social_icons',
+									array(
+										'fb_icon'		 	=>	 'fa fa-facebook',
+										'twitter_icon'		=>	 'fa fa-twitter',
+										'instagram_icon' 	=>	 'fa fa-instagram',
+										'googleplus_icon' 	=>	 'fa fa-google-plus',
+										'linkedin_icon' 	=>	 'fa fa-linkedin',
+										'email_icon'	 	=>	 'fa fa-envelope',
+									)
+								);
+		foreach ( $dutility_social_icons as $key => $value ) {
+			if ( !empty( $dutility_social_icons[$key] ) ) {
+				$$key = $dutility_social_icons[$key];
+			}
 		}
-	}
 
-	$dutility_social_icons_ligatures = apply_filters( 'dutility_social_icons_ligatures',
-								array(
-									'fb_icon_ligature'		 	=>	 ' ',
-									'twitter_icon_ligature'		=>	 ' ',
-									'instagram_icon_ligature' 	=>	 ' ',
-									'googleplus_icon_ligature' 	=>	 ' ',
-									'linkedin_icon_ligature' 	=>	 ' ',
-									'email_icon_ligature'	 	=>	 ' ',
-								)
-							);
-	foreach ( $dutility_social_icons_ligatures as $key => $value ) {
-		if ( !empty( $dutility_social_icons_ligatures[$key] ) ) {
-			$$key = $dutility_social_icons_ligatures[$key];
+		$dutility_social_icons_ligatures = apply_filters( 'dutility_social_icons_ligatures',
+									array(
+										'fb_icon_ligature'		 	=>	 ' ',
+										'twitter_icon_ligature'		=>	 ' ',
+										'instagram_icon_ligature' 	=>	 ' ',
+										'googleplus_icon_ligature' 	=>	 ' ',
+										'linkedin_icon_ligature' 	=>	 ' ',
+										'email_icon_ligature'	 	=>	 ' ',
+									)
+								);
+		foreach ( $dutility_social_icons_ligatures as $key => $value ) {
+			if ( !empty( $dutility_social_icons_ligatures[$key] ) ) {
+				$$key = $dutility_social_icons_ligatures[$key];
+			}
 		}
-	}
 		?>
 		<?php echo $args['before_widget']; ?>
 
@@ -280,16 +273,16 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 
 
 	/**
-   * Sanitize widget form values as they are saved.
-   *
-   * @see WP_Widget::update()
-   *
-   * @param array $new_instance Values just sent to be saved.
-   * @param array $old_instance Previously saved values from database.
-   *
-   * @return array Updated safe values to be saved.
-   */
-  public function update( $new_instance, $old_instance ) {
+	* Sanitize widget form values as they are saved.
+	*
+	* @see WP_Widget::update()
+	*
+	* @param array $new_instance Values just sent to be saved.
+	* @param array $old_instance Previously saved values from database.
+	*
+	* @return array Updated safe values to be saved.
+	*/
+	public function update( $new_instance, $old_instance ) {
 	    $instance = $old_instance;
 	    $instance['title'] = sanitize_text_field( $new_instance['title'] );
 		$instance['fb'] = ( ! empty( $new_instance['fb'] ) ) ? esc_url( $new_instance['fb'] ) : '';
@@ -300,8 +293,8 @@ class Dunhakdis_Social_Media_Widget extends WP_Widget {
 		$instance['email'] = ( ! empty( $new_instance['email'] ) ) ? esc_url( $new_instance['email'] ) : '';
 		$instance['newtab'] = !empty($new_instance['newtab']) ? 1 : 0;
 
-    return $instance;
-  }
+		return $instance;
+	}
 
 	/**
 	 * Back-end widget form.
